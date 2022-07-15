@@ -1,0 +1,2 @@
+try provisioning a file
+(copy and sync a specific file from host to VM)
