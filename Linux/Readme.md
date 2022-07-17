@@ -23,7 +23,7 @@ $ ls file* # lists all files that start with the word file.
 $ cd - # equals backspace in windows.
 $ cd ..  #back one directory.
 $ cd ../.. # back 2 directories.
-$ cd ~ # cd back to user.
+$ cd ~ # cd back to user's home directory.
 $ cd / # cd back to root (parent of all parents :) ).
 ```
 2. **Search for help in commands:**
