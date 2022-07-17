@@ -5,7 +5,7 @@ I've used <a href="https://www.youtube.com/playlist?list=PLlnHaYmkH6w9FfheDdNnq0
 to learn Linux basic commands.
 <br>
 
-### Commands I've learnt:
+### Commands I've Learnt:
 1. **Navigation:**
 * pwd: Print Working Directory.
 ``` shell
@@ -26,7 +26,7 @@ $ cd ../.. # back 2 directories.
 $ cd ~ # cd back to user's home directory.
 $ cd / # cd back to root (parent of all parents :) ).
 ```
-2. **Search for help in commands:**
+2. **Search for Help in Commands:**
 ``` shell
 $ [command] --help
 $ man [command] (preferable)
