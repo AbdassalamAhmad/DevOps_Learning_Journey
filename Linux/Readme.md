@@ -4,8 +4,8 @@
 - I've used <a href="https://www.youtube.com/playlist?list=PLlnHaYmkH6w9FfheDdNnq0ldy6aNKp_3y">**Terminal Tutorial**</a> from a YouTube course
 to learn Linux basic commands.
 
-- Then I've used <a href="https://github.com/kodekloudhub/linux-basics-course">**Linux-Basics-Course** </a>from KodeKloud GitHub Repo
-<br>
+- Then I've used <a href="https://github.com/kodekloudhub/linux-basics-course">**Linux-Basics-Course**</a> from KodeKloud GitHub Repo
+
 
 ### Commands I've learnt:
 1. **Navigation:**
