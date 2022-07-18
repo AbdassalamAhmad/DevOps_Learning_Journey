@@ -7,7 +7,7 @@ to learn Linux basic commands.
 - Then I've used <a href="https://github.com/kodekloudhub/linux-basics-course">**Linux-Basics-Course**</a> from KodeKloud GitHub Repo
 
 
-### Commands I've learnt:
+### Commands I've Learnt:
 1. **Navigation:**
 * **pwd**: Print Working Directory.
 ``` shell
@@ -26,10 +26,10 @@ $ ls -lt # lists all the files in the order they were modified.
 $ cd - # equals backspace in windows.
 $ cd ..  #back one directory.
 $ cd ../.. # back 2 directories.
-$ cd ~ # cd back to user.
+$ cd ~ # cd back to user's home directory.
 $ cd / # cd back to root (parent of all parents :) ).
 ```
-2. **Search for help in commands:**
+2. **Search for Help in Commands:**
 ``` shell
 $ [command] --help
 $ man [command] # **preferable**
