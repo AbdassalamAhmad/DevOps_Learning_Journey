@@ -13,6 +13,7 @@ to learn Linux basic commands.
 ``` shell
 $ pwd
 ```
+
 * ls: List Files
 ``` shell
 $ ls -l -a # List all files (and hidden) in a long format
@@ -21,6 +22,7 @@ $ ls *.txt # lists every file ends with .txt
 $ ls file* # lists all files that start with the word file.
 $ ls -lt # lists all the files in the order they were modified.
 ```
+
 * **cd**: Change Directory
 ``` shell
 $ cd - # equals backspace in windows.
@@ -29,24 +31,29 @@ $ cd ../.. # back 2 directories.
 $ cd ~ # cd back to user's home directory.
 $ cd / # cd back to root (parent of all parents :) ).
 ```
+
+
 2. **Search for Help in Commands:**
 ``` shell
 $ [command] --help
 $ man [command] # **preferable**
 $ info [command]
 ```
+
+
 3. **File System Commands:**
 * **mkdir**: Make Directory
 ``` shell
 $ mkdir dir{5..7} # create 3 folders (dir 5,6,7)
 $ mkdir -p dir1/sub_dir1 # create a folder inside a folder (-p stands for parent directory)
 ```
-* **touch**: Make a New File
 
+* **touch**: Make a New File
 ``` shell
 $ touch code.py # create a python file named code.py
 $ touch code{1..5} # create 5 fiels from 1 to 5.
 ```
+
 * **cp**: Copy Files & Directories
 ``` shell
 $ cp file1.txt file2.txt # copy file1 and rename it to file2 in the same directory.
@@ -55,7 +62,25 @@ $ cp file1.txt file2.txt ./dir1 # copy the two files from this directory to (./d
 $ cp *.txt ./dir1 # copy all txt files to ./dir1
 $ cp -r dir1 dir2 # copy the whole directory dir1 into dir2
 ```
-* **mv**: Move Files || Rename Files & Directories
+
+* **mv**: (Move Files || Rename Files) & Directories
 ```shell
 $ mv file1.txt file2.txt # rename file1 to file2
+$ mv file1.txt file2.txt ./dir1 # move two files to dir1
+```
 
+* **rm**: Remove Files && Directories
+```shell
+$ rm file1.txt file2.txt # remove file1 And file2
+$ rm -rf ./dir1 # remove the whole directory and its children recursively and by force.
+```
+
+* **hardlink**: 
+
+* **softlink**: like a shortcut in windows
+
+```shell
+# it will not work on windows.
+$ ln -s [source] [destination] # link destination file (new) in desktop -for example- to source file in many folders deep.
+$ #IMPORTANT NOTE: write the absolute link to the file not relative link
+```
