@@ -1,4 +1,3 @@
-
 # Linux Resources
 
 - I've used <a href="https://www.youtube.com/playlist?list=PLlnHaYmkH6w9FfheDdNnq0ldy6aNKp_3y">**Terminal Tutorial**</a> from a YouTube course
@@ -75,12 +74,17 @@ $ rm file1.txt file2.txt # remove file1 And file2
 $ rm -rf ./dir1 # remove the whole directory and its children recursively and by force.
 ```
 
-* **hardlink**: 
-
-* **softlink**: like a shortcut in windows
-
+* **hardlink**: It linkes the same file in two different positions and make them not dependeant on each other.
 ```shell
-# it will not work on windows.
-$ ln -s [source] [destination] # link destination file (new) in desktop -for example- to source file in many folders deep.
+$ ln [source] [destination] # link destination file (new) in desktop -for example- to source file in a deep path.
 $ #IMPORTANT NOTE: write the absolute link to the file not relative link
 ```
+
+* **softlink**: like a shortcut in windows.
+
+```shell
+$ ln -s [source] [destination] # link destination file (new) in desktop -for example- to source file in a deep path.
+$ #IMPORTANT NOTE: write the absolute link to the file not relative link
+```
+
+4. **File System Permissions:**
