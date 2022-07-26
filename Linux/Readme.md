@@ -6,8 +6,8 @@ to learn Linux basic commands.
 - Then I've used <a href="https://github.com/kodekloudhub/linux-basics-course">**Linux-Basics-Course**</a> from KodeKloud GitHub Repo
 
 
-### Commands I've Learnt:
-1. **Navigation:**
+## Commands I've Learnt:
+## 1. **Navigation:**
 * **pwd**: Print Working Directory.
 ``` shell
 $ pwd
@@ -32,7 +32,7 @@ $ cd / # cd back to root (parent of all parents :) ).
 ```
 
 
-2. **Search for Help in Commands:**
+## 2. **Search for Help in Commands:**
 ``` shell
 $ [command] --help
 $ man [command] # **preferable**
@@ -40,7 +40,7 @@ $ info [command]
 ```
 
 
-3. **File System Commands:**
+## 3. **File System Commands:**
 * **mkdir**: Make Directory
 ``` shell
 $ mkdir dir{5..7} # create 3 folders (dir 5,6,7)
@@ -62,7 +62,7 @@ $ cp *.txt ./dir1 # copy all txt files to ./dir1
 $ cp -r dir1 dir2 # copy the whole directory dir1 into dir2
 ```
 
-* **mv**: (Move Files || Rename Files) & Directories
+* **mv**: Move || Rename Files & Directories
 ```shell
 $ mv file1.txt file2.txt # rename file1 to file2
 $ mv file1.txt file2.txt ./dir1 # move two files to dir1
@@ -87,4 +87,23 @@ $ ln -s [source] [destination] # link destination file (new) in desktop -for exa
 $ #IMPORTANT NOTE: write the absolute link to the file not relative link
 ```
 
-4. **File System Permissions:**
+## 4. **File System Permissions:**
+
+**rwx**: read write execute<br>
+|  rwx   | rwx          | rwx      | 
+| -------| :----------: | :------: |
+| USER   | GROUP        | OTHERS   |
+
+* **chmod**: Change File || Directory Mode (Permissions)
+```shell
+$ chmod 740 file1.txt
+$ # The permissions will be rwx r-- ---
+$ # It's like the binary
+```
+**OR**
+
+```shell
+$ chmod u+r file1.txt # add read permission to user
+$ chmod g-w file1.txt # remove write permission from group
+$ chmod go=wx file1.txt # set write and execute permission to group and others (no read only write and execute)
+```
