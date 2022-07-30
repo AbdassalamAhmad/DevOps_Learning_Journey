@@ -1,11 +1,11 @@
 # DevOps Roadmap
 
 
-## Contetnts:
+
 In every folder I've documented what I've learnt and the resources I've studied from.<br>
 So that you can find most important commands and the benefit of every tool I'm using as a **DevOps Engineer.**
 
-#### DevOps Tools:
+## DevOps Tools:
 1. Docker: 
     - I've used it to containarize every app alone with its dependencies.
     - The benefit is to be able to run the app without dependencies conflicts.
@@ -14,11 +14,11 @@ So that you can find most important commands and the benefit of every tool I'm u
 4. Terraform: Infrastructure Provisioning.
 5. Grafana {To-Do}: for Visualization.
 
-#### Programming Languages:
+## Programming Languages:
 1. Python: I've used it to automate most repetitive tasks.
 2. Bash Script: I've used it to automate most repetitive tasks.
 
-#### Operating System & Source Control:
+## Operating System & Source Control:
 1. Linux: Since most servers runs on Linux I had to learn these topics.
     - User & File Management : chmod, ls, rm, mkdir, cd, cat, touch,..etc.
     - SSH: connect to tother devices using Secure SHell.
@@ -31,6 +31,6 @@ So that you can find most important commands and the benefit of every tool I'm u
     - I've learnt also to pull changes that other developers made to the shared repo
     - Finally I can make a branch to develop a new feature without affecting the main branch.
 
-#### Other Tools:
+## Other Tools:
 * Vagrant: I've used it to make my own lab of virtual machines to test what I've learnt practically.
 
