@@ -117,3 +117,8 @@ $ chmod go=wx file1.txt # set write and execute permission to group and others (
 ```shell
 $ top 
 ```
+3. **ps**: list running prcess in foreground 
+
+```shell
+$ ps -u <user> # display process for this specific user.
+```
