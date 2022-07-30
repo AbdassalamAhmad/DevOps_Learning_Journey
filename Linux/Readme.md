@@ -107,3 +107,13 @@ $ chmod u+r file1.txt # add read permission to user
 $ chmod g-w file1.txt # remove write permission from group
 $ chmod go=wx file1.txt # set write and execute permission to group and others (no read only write and execute)
 ```
+
+## **Linux Process Management**
+
+1. **&**: you can use this sign & to run any process in the **background**.
+
+2. **top**: list all runing process.
+
+```shell
+$ top 
+```
