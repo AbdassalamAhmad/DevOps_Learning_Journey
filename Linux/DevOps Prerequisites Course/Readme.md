@@ -1,5 +1,5 @@
 # Commands I've Learnt:
-## **1.User Accounts:**
+## **1. User Accounts:**
 1. **whoami**: to know which user your logged in.
 
 2. **id** : to know the userid and group id.
@@ -81,3 +81,36 @@ $ systemctl daemon-reload # Refresh the system files to get the new system file.
 $ systemctl start app
 $ systemctl enable app # to start at startup.
 ```
+
+## **6. VI Editor:**
+- **Insert Mode**: Press 'i'.
+- **Command Mode**: Press 'esc'.
+- **Delete a Line**: Press 'dd'.
+- **Copy then Paste**: Press 'yy' then 'p'.
+- **Find**: Press '/' then what you want to find.
+- **Save with Naming**: Press ':w name'
+- **Quit**: Press ':q'
+- **Save and Quit**: Press ':wq'
+
+## **7. SSH:**
+- To SSH from windows to ubuntu you need to make sure that sshd service is installed and running.
+```shell
+$ systemctl status sshd
+$ systemctl start sshd # if it's not started
+```
+
+- Then you must know the ip of your VM and the username.
+```shell
+$ ip addr
+OR
+$ ifconfig # look at the ouput near 'enp0s3' 'inet'
+$ whoami # to know the name of the user.
+```
+**Note:** if the ip address wasn't 192.168.*.\* then you need to configure the vm network by selecting bridge adapter from VM Network settings.
+
+- Now you can ssh from your windows terminal.
+```shell
+$ ssh user@192.168.1.17 # Then provide the password and you're in.
+```
+
+
