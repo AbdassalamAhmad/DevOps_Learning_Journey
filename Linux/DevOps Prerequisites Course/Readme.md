@@ -113,6 +113,7 @@ $ whoami # to know the name of the user.
 $ ssh user@192.168.1.17 # Then provide the password and you're in.
 ```
 
+![image](https://user-images.githubusercontent.com/83673888/183394660-e9912b99-e04d-4f58-91af-10bdd99cd768.png)
 
 
 
