@@ -7,6 +7,11 @@ With the help of that course, I've built three virtual machines (VM) on my lab u
 So, Now I can configure this lab using Ansible to be able to install docker and kuberentes and other tools with one Ansible Playbook without manually install it on every VM or server.
 
 ### Most important commands in Vagrant:
+0. To Get help in Vagrant commands.
+```shell
+$ Vagrant
+```
+
 1. Bring up the vagrant instance.
 ``` shell
 $ vagrant up
@@ -32,7 +37,7 @@ $ vagrant global-status
 $ vagrant ssh-config
 ```
 
-6. Restart Virtual Machine.
+6. Restart Virtual Machine to Reload new configurations.
 ``` shell
 $ vagrant reload
 ```
@@ -42,7 +47,7 @@ $ vagrant reload
 $ vagrant halt
 ```
 
-8. Stop and Save state if the Virtual Machine.
+8. Stop and Save state of the Virtual Machine.
 ``` shell
 $ vagrant suspend
 ```
@@ -50,6 +55,12 @@ $ vagrant suspend
 9. Delete the Virtual Machine
 ``` shell
 $ vagrant destroy
+```
+
+10. **Alternatively** you can use simple ssh command instead of using **vagrant ssh** ,and get the same results.
+```shell
+$ ssh vagrant@172.16.1.51 -p 22 # then you put the password which is vagrant.
+$ # now you are in the node1 VM
 ```
 
 #### I'm regularly using these websites for some syntax help.

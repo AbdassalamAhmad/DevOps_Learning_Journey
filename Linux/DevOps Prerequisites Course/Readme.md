@@ -112,6 +112,8 @@ $ whoami # to know the name of the user.
 ```shell
 $ ssh user@192.168.1.17 # Then provide the password and you're in.
 ```
+## **8. Snapshots in VirtualBox**
+- We can use snapshots to restore the vm to a good state that we know it was good before testing a new software. We can do that by clicking snapshots button on the required vm.
 
 ![image](https://user-images.githubusercontent.com/83673888/183394660-e9912b99-e04d-4f58-91af-10bdd99cd768.png)
 

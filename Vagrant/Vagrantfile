@@ -4,19 +4,22 @@ Vagrant.configure("2") do |config|
         :hostname => "control",
         :box => "bento/ubuntu-18.04",
         :ip => "172.16.1.50",
-        :ssh_port => '2200'
+        :ssh_port => '2200',
+        :name => 'control'
       },
       {
         :hostname => "node1",
         :box => "bento/ubuntu-18.04",
         :ip => "172.16.1.51",
-        :ssh_port => '2201'
+        :ssh_port => '2201',
+        :name => 'node1'
       },
       {
         :hostname => "node2",
         :box => "bento/ubuntu-18.04",
         :ip => "172.16.1.52",
-        :ssh_port => '2202'
+        :ssh_port => '2202',
+        :name => 'node2'
       }
     ]
 
@@ -32,6 +35,7 @@ Vagrant.configure("2") do |config|
           node.vm.provider "virtualbox" do |vb|
             vb.memory = 512
             vb.cpus = 1
+            vb.name = machine[:name]
           end
       end
   end
