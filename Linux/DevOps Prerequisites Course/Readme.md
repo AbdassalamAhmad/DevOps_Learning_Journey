@@ -119,6 +119,6 @@ $ ssh user@192.168.1.17 # Then provide the password and you're in.
 
 
 
-![image](https://user-images.githubusercontent.com/83673888/183393909-c208c17c-609b-4d53-9912-4a494c1c13b7.png)
+![image](https://user-images.githubusercontent.com/83673888/183394278-35b619af-5206-4bb7-9253-581e4f78e464.png)
 
 
