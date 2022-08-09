@@ -89,7 +89,7 @@ $ systemctl enable app # to start at startup.
 - **Copy then Paste**: Press 'yy' then 'p'.
 - **Find**: Press '/' then what you want to find.
 - **Save with Naming**: Press ':w name'
-- **Quit**: Press ':q'
+- **Quit and override**: Press ':q!'
 - **Save and Quit**: Press ':wq'
 
 ## **7. SSH:**
@@ -118,5 +118,21 @@ $ ssh user@192.168.1.17 # Then provide the password and you're in.
 ![image](https://user-images.githubusercontent.com/83673888/183394660-e9912b99-e04d-4f58-91af-10bdd99cd768.png)
 
 
+## **9. DNS:**
+* Hosts File
+    - Domain Name System is a system to replace IPs with names that are easy to remember.
+    - you can try using DNS on your local network, say you have another device with this ip 192.168.1.11 , and you want to name it db to reach for it faster, You can do that by modifying the "/etc/hosts" file on your system like this.<br>
+    192.168.1.11 db
+    - Now you can ping "db" instead of 192.168.1.11
+* Record Types
+    - A : storing IPv4 to host names. Like : web-server 192.168.1.1
+    - AAAA : Storing IPv6 to host names. Like : web-server 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+    - CNAME : Storing names to names. Like : food.web-server eat.web-server
+
+* You can use "nslookup" command to query a hostname from a DNS server.
+```shell
+$ nslookup www.google.com 
+$ # Outputs the IP address of www.google.com
+```
 
 
