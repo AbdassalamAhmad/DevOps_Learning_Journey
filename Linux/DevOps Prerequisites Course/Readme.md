@@ -129,10 +129,40 @@ $ ssh user@192.168.1.17 # Then provide the password and you're in.
     - AAAA : Storing IPv6 to host names. Like : web-server 2001:0db8:85a3:0000:0000:8a2e:0370:7334
     - CNAME : Storing names to names. Like : food.web-server eat.web-server
 
-* You can use "nslookup" command to query a hostname from a DNS server.
+* You can use "nslookup" OR "dig" commands to query a hostname from a DNS server.
 ```shell
 $ nslookup www.google.com 
 $ # Outputs the IP address of www.google.com
+$ dig www.google.com
+$ # Outputs more detailed info about www.google.com
 ```
 
+## **10. Routing and Switching:**
+- You can find all useful commands and best practices in [KodeKloud Labs](https://kodekloud.com/topic/labs-switching-and-routing-2/).
 
+
+## **12. JSON:**
+
+```json
+{
+    "car":{
+        "price":"20",
+        "wheels":[
+            {"state":"good",
+            "position":"rear"},
+            {"state":"bad",
+            "position":"front"}
+        ]
+    },
+    "bus":{
+        "color":"red"
+    }
+}
+```
+- **How to Query from a Dictionary:**<br>
+By using \$ sign we can query the car price like this: $.car.price **# "20"**
+- **How to Query from a List:**<br>
+By using square bracketes like this: $.car.wheels[0].position **# "rear"**
+- **Criteria:**<br>
+    - $[?(@>40)] # check if each item in the array > 40
+    - $.car.wheels[?(@.position=="front")].state **# "good"**
