@@ -26,7 +26,9 @@ So that you can find most important commands and the benefit of every tool I'm u
     - SSH: connect to tother devices using Secure SHell.
     - Process Managing: kill, start, ps, top,..etc.
     - Text Manipulation Tools: awk, sed, grep, sort, echo,..etc.
-    - Network: nmap, ping, netstat,..etc
+    - Search: find, locate, whatis, apropos.
+    - Network: nmap, ping, netstat,..etc.
+    - KodeKloud commands:
 
 2. [**Git & GitHub**](https://github.com/AbdassalamAhmad/DevOps_Learning_Journey/tree/main/Git%20%26%20GitHub):
     - I've used it to push code from my local repo to shared repo and roll back whenever I did something wrong, OR if I deleted a file by accident.
