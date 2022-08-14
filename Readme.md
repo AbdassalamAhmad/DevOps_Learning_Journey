@@ -22,12 +22,12 @@ So that you can find most important commands and the benefit of every tool I'm u
 
 ## Operating System & Source Control:
 1. [**Linux**](https://github.com/AbdassalamAhmad/DevOps_Learning_Journey/tree/main/Linux): Since most servers runs on Linux I had to learn these topics.
-    - User & File Management : chmod, ls, rm, mkdir, cd, cat, touch,..etc.
+    - User & File Management : chmod, ls, cp, rm, mkdir, cd, cat, touch,..etc.
     - SSH: connect to tother devices using Secure SHell.
-    - Process Managing: kill, start, ps, top,..etc.
+    - Process Management: kill, start, ps, top,..etc.
     - Text Manipulation Tools: awk, sed, grep, sort, echo,..etc.
     - Search: find, locate, whatis, apropos.
-    - Network: nmap, ping, netstat,..etc.
+    - Network: nmap, ping, netstat, ifconfig, ..etc.
     - KodeKloud: commands I've learnt from working on tasks in their virtual company.
 
 2. [**Git & GitHub**](https://github.com/AbdassalamAhmad/DevOps_Learning_Journey/tree/main/Git%20%26%20GitHub):

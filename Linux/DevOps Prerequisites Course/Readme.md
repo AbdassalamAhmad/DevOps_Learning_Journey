@@ -58,6 +58,7 @@ $ systemctl stop httpd # Stop service httpd.
 $ systemctl status httpd # Check HTTPD service Status.
 $ systemctl enable httpd # Configure HTTPD to start at startup
 $ systemctl disable httpd # Configure HTTPD to not start at startup
+$ systemctl restart httpd # Restart a service after changing a configuration file.
 ``` 
 
 **Note:** If you want to configure your own app to make it a service and be able to start automatically at startup you can do these seteps:
