@@ -166,3 +166,9 @@ By using square bracketes like this: $.car.wheels[0].position **# "rear"**
 - **Criteria:**<br>
     - $[?(@>40)] # check if each item in the array > 40
     - $.car.wheels[?(@.position=="front")].state **# "good"**
+
+## **13. KodeKloud Tasks:**
+1. create a user with a non-interactive shell 
+```shell
+$ adduser username  -s /sbin/nologin 
+```

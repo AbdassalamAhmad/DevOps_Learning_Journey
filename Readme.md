@@ -28,7 +28,7 @@ So that you can find most important commands and the benefit of every tool I'm u
     - Text Manipulation Tools: awk, sed, grep, sort, echo,..etc.
     - Search: find, locate, whatis, apropos.
     - Network: nmap, ping, netstat,..etc.
-    - KodeKloud commands:
+    - KodeKloud: commands I've learnt from working on tasks in their virtual company.
 
 2. [**Git & GitHub**](https://github.com/AbdassalamAhmad/DevOps_Learning_Journey/tree/main/Git%20%26%20GitHub):
     - I've used it to push code from my local repo to shared repo and roll back whenever I did something wrong, OR if I deleted a file by accident.

@@ -9,6 +9,7 @@ $ pwd
 ``` shell
 $ ls -l -a # List all files (and hidden) in a long format
 $ ls -a ../ # list all files in the parent directory.
+$ ls -R # list all files and Dirs and thier sub-directories RECURSIVELY.
 $ ls *.txt # lists every file ends with .txt
 $ ls file* # lists all files that start with the word file.
 $ ls -lt # lists all the files in the order they were modified.
