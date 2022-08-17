@@ -5,12 +5,12 @@
 2. **id** : to know the userid and group id.
 
 3. **su**: change user logged in to other user.
-```shell
+```bash
 $ su user2 # change loggedin usesr from old user to user2
 ```
 
 4. **ssh**: use secure shell to log into other system with different user
-```shell
+```bash
 $ ssh user3@192.168.1.3 # the host is the ip
 ```
 
@@ -18,17 +18,17 @@ $ ssh user3@192.168.1.3 # the host is the ip
 
 ## **2. Download Files:**
 1. **curl**: download a file.
-```shell
+```bash
 $ curl http://www.some-site.com/some-file.txt -O # Downloads some-file.txt in the working directory
 ```
 
 2. **wget**: download a file.
-```shell
-$ wget http://www.some-site.com/some-file.txt -O new-file.txt # download some-file.txt and rename it to new0file.txt
+```bash
+$ wget http://www.some-site.com/some-file.txt -O new-file.txt # download some-file.txt and rename it to new-file.txt
 ```
 
 ## **3. Check OS Version:**
-```shell
+```bash
 $ ls /etc/*release* 
 $ cat /etc/*release* # view more details about the os version.
 ```
@@ -36,13 +36,13 @@ $ cat /etc/*release* # view more details about the os version.
 ## **4. Package Managers:**
 - **yum**: "Yellowdog Updater, Modified" is a powerful package manager used to download and install softwares and its dependencies and it is used mostly on RHEL family OS’s.
 
-```shell
+```bash
 $ yum install ansible # install ansible :)
 $ yum remove ansible # remove ansible.
 ```
 
 - **apt**: "Advanced package tool" ia another powerful package manager that downloads and installs softwares used mostly on debian like ubuntu.
-```shell
+```bash
 $ apt install ansible # install ansible.
 $ apt remove ansible # remove ansible.
 $ apt update # Refreshes repository index.
@@ -52,7 +52,7 @@ $ apt show [package] # Shows package details.
 ## **5. Services:**
 - **systemctl or service**: both commands are used to control the system and service manager with different syntax.
 
-```shell
+```bash
 $ systemctl start httpd # Start service httpd.
 $ systemctl stop httpd # Stop service httpd.
 $ systemctl status httpd # Check HTTPD service Status.
@@ -62,7 +62,7 @@ $ systemctl restart httpd # Restart a service after changing a configuration fil
 ``` 
 
 **Note:** If you want to configure your own app to make it a service and be able to start automatically at startup you can do these seteps:
-```shell
+```bash
 $ cd /etc/systemd/system
 $ touch app.system
 $ nano app.system
@@ -95,13 +95,13 @@ $ systemctl enable app # to start at startup.
 
 ## **7. SSH:**
 - To SSH from windows to ubuntu you need to make sure that sshd service is installed and running.
-```shell
+```bash
 $ systemctl status sshd
 $ systemctl start sshd # if it's not started
 ```
 
 - Then you must know the ip of your VM and the username.
-```shell
+```bash
 $ ip addr
 OR
 $ ifconfig # look at the ouput near 'enp0s3' 'inet'
@@ -110,7 +110,7 @@ $ whoami # to know the name of the user.
 **Note:** if the ip address wasn't 192.168.*.\* then you need to configure the vm network by selecting bridge adapter from VM Network settings.
 
 - Now you can ssh from your windows terminal.
-```shell
+```bash
 $ ssh user@192.168.1.17 # Then provide the password and you're in.
 ```
 ## **8. Snapshots in VirtualBox**
@@ -131,7 +131,7 @@ $ ssh user@192.168.1.17 # Then provide the password and you're in.
     - CNAME : Storing names to names. Like : food.web-server eat.web-server
 
 * You can use "nslookup" OR "dig" commands to query a hostname from a DNS server.
-```shell
+```bash
 $ nslookup www.google.com 
 $ # Outputs the IP address of www.google.com
 $ dig www.google.com
@@ -169,7 +169,7 @@ By using square bracketes like this: $.car.wheels[0].position **# "rear"**
     - $.car.wheels[?(@.position=="front")].state **# "good"**
 
 ## **13. KodeKloud Tasks:**
-1. create a user with a non-interactive shell 
-```shell
+1. create a user with a non-interactive bash 
+```bash
 $ adduser username  -s /sbin/nologin 
 ```
