@@ -86,7 +86,7 @@ $ systemctl enable app # to start at startup.
 ## **6. VI Editor:**
 - **Insert Mode**: Press 'i'.
 - **Command Mode**: Press 'esc'.
-- **Delete a Line**: Press 'dd'.
+- **Delete a letter &&& Line**: Press 'x' &&& 'dd'.
 - **Copy then Paste**: Press 'yy' then 'p'.
 - **Find**: Press '/' then what you want to find.
 - **Save with Naming**: Press ':w name'
