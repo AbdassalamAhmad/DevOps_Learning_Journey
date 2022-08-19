@@ -112,3 +112,13 @@ $ view file1 # Opens file1 in read-only mode. Press :q to quit
 - **N**: When pressing N it searches for the previous occurrence of the string.
 - **:%s/old/new/g**: Searches for the old string and replaces it with the new string globally.
 - **:set nu**: show lines numbers.
+
+### 2. Environment Variables:
+- **env**: it display all environment variables.
+- **$PATH**: A colon-separated list of directories used by the shell to look for executable program names.
+- **alias**: make your own commands shortcut.
+```bash
+$ alias list='ls -l' # this will make list same as ls -l command.
+$ unalias list # it removes list command and you can use ls -l normally.
+```
+
