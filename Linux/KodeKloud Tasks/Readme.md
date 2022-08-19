@@ -11,3 +11,13 @@ $ vi /etc/postfix/main.cf
 $ # we find this line 'net_interfaces = localhost' and comment it to solve the problem.
 $ systemctl start postfix 
 $ systemctl status postfix # to make sure the problem is solved.
+```
+
+## **2. Install squid package on all servers and make sure it's enabled to start during boot.
+
+```bash
+$ ssh app1,app2,app3 # ssh into all 3 apps and enter the password.
+$ yum -y install squid # install squid package.
+$ systemctl start squid # start the service.
+$ systemctl enable squid # enable the service to run after boot.
+```
