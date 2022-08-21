@@ -122,3 +122,24 @@ $ alias list='ls -l' # this will make list same as ls -l command.
 $ unalias list # it removes list command and you can use ls -l normally.
 ```
 
+## Day 4: Processes, Pipeline ( | ), Search in Files:
+### 1. Processes:
+
+- **ps**: list running prcess in foreground.
+```bash
+$ ps -a # display all process attached to the terminal even with different tabs.
+$ ps -f # display all information about process.
+```
+
+- **jobs**: list running jobs.
+```bash
+$ sleep 100 & # delay for 100 seconds and run it in the background.
+$ jobs # list all jobs, Outputs [1]+ Running.
+$ fg 1 # move job no.1 from background to foreground.
+$ ctrl+z # stop the running command (sleep in the foreground).
+$ bg 1 # move the running command (sleep) to the background again.
+
+$ kill -19 %1 # SigStop sleep command.
+$ kill %1 # SigTerm sleep command.
+$ jobs # list that it's terminated and then it's gone.
+```
