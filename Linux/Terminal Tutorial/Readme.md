@@ -118,19 +118,19 @@ $ top
 Note: You can press F to see all options in the command and its meaning.
 ![image](https://user-images.githubusercontent.com/83673888/181936458-d7905a79-e55f-4adc-92c9-6685c1b62a20.png)
 
-3. **ps**: list running prcess in foreground 
+3. **ps**: list running prcess in foreground .
 ```bash
 $ ps -u <user> # display process for this specific user.
 ```
 
-4. **pgrep**: list the PID of the specific program
+4. **pgrep**: list the PID of the specific program.
 ```bash
 $ pgrep top # display its PID
 ```
 
-5. **fg**: Get Stopped or Background process to foreground
+5. **fg**: Get Stopped or Background process to foreground.
 
-6. **bg**: Resume Stopped process in the background
+6. **bg**: Resume Stopped process in the background.
 
 7. **kill**: send a signal to a process using its PID.
 ```bash
