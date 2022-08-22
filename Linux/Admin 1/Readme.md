@@ -143,3 +143,22 @@ $ kill -19 %1 # SigStop sleep command.
 $ kill %1 # SigTerm sleep command.
 $ jobs # list that it's terminated and then it's gone.
 ```
+
+- **nice**: start a process with adjusted priority.
+A negative nice value means higher priority, whereas a positive nice value means lower priority.<br>
+Zero in this field simply means priority will not be adjusted in determining a task's dispatch-ability.<br>
+nice value range is -20 to +19 where -20 is highest, 0 default and +19 is lowest.
+```bash
+$ nice -5 wget https://wordpress.org/latest.zip # start download process with a nice value of 5.
+$ sudo nice --5 wget https://wordpress.org/latest.zip # start download process with a nice value of (-5) (higher priority requires sudo privileges).
+
+```
+
+- **renice**: change the priority for a currently active process.
+```bash
+$ sudo renice -n nice_value  -p pid_of_the_process
+$ ps -el | grep gnome-terminal
+$ sudo renice -n 5 -p 8721 # adjust priority of a specific process by its id.
+$ sudo renice -n 5 -g sales # adjust priority of athe sales group.
+$ # OR you can use the 'r' command from the top utility to change niceness.
+```
