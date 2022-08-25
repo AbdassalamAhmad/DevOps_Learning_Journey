@@ -1,5 +1,5 @@
 # Commands I've Learnt:
-I will write the new commands for me because most of these commands I've studied from another sources.
+**I will write the new commands for me because most of these commands I've studied from another sources.**
 ## Day 1: Basic Commands
 
 - **ls**: List files and dir.
@@ -122,7 +122,7 @@ $ alias list='ls -l' # this will make list same as ls -l command.
 $ unalias list # it removes list command and you can use ls -l normally.
 ```
 
-## Day 4: Processes, Pipeline ( | ), Search in Files:
+## Day 4: Processes, I/O Management, Search in Files:
 ### 1. Processes:
 
 - **ps**: list running prcess in foreground.
@@ -162,3 +162,71 @@ $ sudo renice -n 5 -p 8721 # adjust priority of a specific process by its id.
 $ sudo renice -n 5 -g sales # adjust priority of athe sales group.
 $ # OR you can use the 'r' command from the top utility to change niceness.
 ```
+
+- **pgrep**: Search for a process ID.
+``` bash
+$ pgrep -l ps # List PID and its process name.
+```
+
+### 2. I/O Management:
+- **Output Redirection**: 
+```bash
+$ ls > /dev/null # discard output.
+$ ls > ./file1.txt # save the output to file1.txt
+$ sort < file1.txt > sortedfile1.txt # sort file1.txt contetnts and save it in sortedfile1.txt
+```
+
+### 3. Search in Files:
+- **wc**: count character words, lines in a file to compare different versions of a file.
+```bash
+$ wc file1 -w # count the number of words only.
+```
+
+- **diff**: Compare fiels line by line. here is [a great tutorial](https://linuxize.com/post/diff-command-in-linux/). 
+```bash
+$ diff file1.txt file2.txt
+``` 
+
+- **grep**: search for a pattern in a file or in an output of a code.
+```bash
+$ ls | grep file1.txt # highlights file1.txt if it is in the directory.
+$ grep -r word # searches for this "word" in all of the files and subdirectory files.
+$ grep -i word file1 # search for "word" in file1, (no case sensetive) WORD is good.
+$ grep -v word file1 # Show all lines except the one containing "word"
+```
+
+- **tr**: translate or delete characters.
+```bash
+$ echo "hello, world!" | tr [a-z] [A-Z] # returns all CAPS.
+$ echo "Hello, World!" | tr [:space:] '\t' # returns tabs instead of spaces.
+```
+
+- **cut**: Remove a section from every line of a specific file.
+```bash
+$ cut -f3 -d: /etc/passwd # shows the third column from every line of this file, (-d stands for delimiter, default = TAB).
+$ cut -c1-4 /etc/paswwd # shows the first 4 characters of every line.
+$ echo "Hello, World!" | cut -c1-5 > file1.txt # put Hello into file1.txt and save it.
+```
+
+- **sort**: sort lines of text files.
+```bash 
+$ sort –t : –o passwd_sorted /etc/passwd # sort the file into alphabetical order and save it into passwd_sorted, (-t select the delimiter)
+```
+
+## Day 4: Archiving, yum.
+### 1. Archiving:
+- **tar**: create an archive.
+```bash
+$ tar -cvf archivename.tar file1 file2 file3 # -c: create archive, -v: verbose (write files names), -f: specify the archive file.
+$ tar -rvf archivename.tar file4 # add file4 to archive.
+$ tar -uvf /root/homes.tar /home # -u: updates an archive, only newer files will be written to the archive.
+$ tar -tvf /root/homes.tar # -t: List contents of archive.
+$ tar -xvf /root/homes.tar -C /tmp # -C: To specify the target directory you want to extract the file to.
+$ tar -zcvf archive.tar.gz file1 # create an archive and COMPRESS it.
+```
+- **compress**: compress a file.
+```bash
+$ gzip file1 # compress file1 into file1.gz
+$ gzip file1.tar # compress the archive into file1.tar.gz
+```
+
