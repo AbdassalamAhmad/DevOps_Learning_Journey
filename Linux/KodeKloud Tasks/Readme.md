@@ -28,3 +28,14 @@ $ systemctl enable squid # enable the service to run after boot.
 $ ssh app2 # ssh into app2 and enter the password.
 $ sudo useradd -M jim # create user named jim with no home directory
 ```
+
+## **4. Linux banner: (Update the message of the day on all application).
+
+```bash
+$ ssh app1,app2,app3 # ssh into all 3 apps and enter the password.
+$ sudo vi /etc/motd # create a new file on each server with the name of message of the day.
+$ # paste the contents of the template provided in the task. DONE.
+$ # OR you can
+$ scp sudo scp -r  /root/nautilus_banner tony@stapp01:/home/tony
+$ # and then you can move it to /etc/motd and complete the rest of the steps.
+```
