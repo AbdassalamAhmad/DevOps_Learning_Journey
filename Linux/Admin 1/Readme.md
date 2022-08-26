@@ -213,8 +213,7 @@ $ echo "Hello, World!" | cut -c1-5 > file1.txt # put Hello into file1.txt and sa
 $ sort –t : –o passwd_sorted /etc/passwd # sort the file into alphabetical order and save it into passwd_sorted, (-t select the delimiter)
 ```
 
-## Day 4: Archiving, yum.
-### 1. Archiving:
+## Day 4: Archiving
 - **tar**: create an archive.
 ```bash
 $ tar -cvf archivename.tar file1 file2 file3 # -c: create archive, -v: verbose (write files names), -f: specify the archive file.
