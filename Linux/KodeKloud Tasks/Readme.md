@@ -29,7 +29,7 @@ $ ssh app2 # ssh into app2 and enter the password.
 $ sudo useradd -M jim # create user named jim with no home directory
 ```
 
-## **4. Linux banner: (Update the message of the day on all application).
+## **4. Linux banner: (Update the message of the day on all application).**
 
 ```bash
 $ ssh app1,app2,app3 # ssh into all 3 apps and enter the password.
@@ -38,4 +38,20 @@ $ # paste the contents of the template provided in the task. DONE.
 $ # OR you can
 $ scp sudo scp -r  /root/nautilus_banner tony@stapp01:/home/tony
 $ # and then you can move it to /etc/motd and complete the rest of the steps.
+```
+
+## **5. change the default runlevel so that users can boot in GUI.**
+
+```bash
+$ systemctl get-default # to know which runtime we're at.
+$ systemctl set-default graphical.target # change runtime from multi-user.target to graphical.target
+$ systemctl status graphical.target # to see status of this service.
+$ systemctl start graphical.target # to start the service if it was dead.
+```
+## **6.Find all files owned by user rose inside /home/usersdata directory and copy them all while keeping the folder structure to /media directory.**
+
+```bash
+$ ssh app2 # ssh into app2 and enter the password.
+$ find /home/usersdata/ -type f -user rose -exec cp --parents {} /media \; # use find then exec to execute the command on the result of find command.
+$ # then use copy commands with flag --parents to preserve the directories path.
 ```
