@@ -84,13 +84,67 @@ echo "My favorite colours are also ${colours[0]}, ${colours[1]} and ${colours[2]
 ```bash
 #!/bin/bash
 # Declare array with 4 elements
-ARRAY=( 'Debian Linux' 'Redhat Linux' Ubuntu Linux )
+ARRAY=( 'Debian Linux' ,'Redhat Linux' Ubuntu  Linux )
 # get number of elements in the array
-ELEMENTS=${#ARRAY[@]}
+ELEMENTS=${#ARRAY[@]} # outputs 4
 
-# echo each element in array 
-# for loop
-for (( i=0;i<$ELEMENTS;i++)); do
+# print each element in array 
+for (( i=0;i<$ELEMENTS;i++)); do # foe loop like C language.
     echo ${ARRAY[${i}]}
 done 
 ```
+
+## 7. if/else Statement:
+```bash
+#!/bin/bash
+#Usage:
+# when running the script in a directory search for a directory called "BashScripting", If it's there print it exists otherwise print it doesn't exists.
+directory="./BashScripting"
+backup="/backup" # this directory we can ask for it as well if we want in the future.
+# bash check if directory exists
+if [ -d $directory ]; then
+	echo "${directory:2:-1} directory exists"
+else 
+	echo "${directory:2:-1} directory does not exist"
+fi
+```
+
+## 8. Nested if/else:
+```bash
+echo "waht is your favorite meal?: "
+echo "1. taco"
+echo "2. fried potatos"
+echo "3. salad"
+read choice
+
+if [ $choice -eq 1 ]; then
+	echo "you've chosen taco"
+if [ $choice -eq 1 ]; then
+	echo "you've chosen fried potato"
+if [ $choice -eq 1 ]; then
+	echo "you've chosen salad"
+else
+	echo "you should only type 1 or 2 or 3"
+fi
+```
+
+## 9. Arithmetic Comparisons:
+
+| Syntax    | Symbol        | Description 		    |
+| ----------| :-----------: | :-------------------: |
+| -lt 		|	< 			| less than 			|
+| -gt 		|	> 			| greater than 			|
+| -le 		|	<= 			| less than or equal 	|
+| -ge 		|	>= 			| greater than or equal |
+| -eq 		|	== 			| equal 				|
+| -ne 		|	!= 			| not equal 			|
+
+## 10. String Comparisons
+| Syntax  | Description     		|
+| --------| :---------------------: |
+| <       |	less than 				|
+| >       |	greater than 			|
+| -n s1   |	string s1 is not empty  |
+| -z s1   |	string s1 is empty 		|
+| =       |	equal 					|
+| !=      |	not equal 				|
