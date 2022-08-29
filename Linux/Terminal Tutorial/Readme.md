@@ -95,8 +95,8 @@ $ #IMPORTANT NOTE: write the absolute link to the file not relative link
 
 * **chmod**: Change File || Directory Mode (Permissions)
 ```bash
-$ chmod 740 file1.txt
-$ # The permissions will be rwx r-- ---
+$ chmod 742 file1.txt
+$ # The permissions will be rwx r-- -w-
 $ # It's like the binary
 ```
 **OR**
