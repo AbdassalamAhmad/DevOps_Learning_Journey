@@ -139,7 +139,7 @@ fi
 | -eq 		|	== 			| equal 				|
 | -ne 		|	!= 			| not equal 			|
 
-## 10. String Comparisons
+## 10. String Comparisons:
 | Syntax  | Description     		|
 | --------| :---------------------: |
 | <       |	less than 				|
@@ -148,3 +148,85 @@ fi
 | -z s1   |	string s1 is empty 		|
 | =       |	equal 					|
 | !=      |	not equal 				|
+
+
+
+## 11. File Testing:
+| Syntax		     | Description     		     		     		     		        |
+| -------------------| :--------------------------------------------------------------: |
+|-d  directoryname	 |	Check for directory existence 									|
+|-e  filename	 	 |	Check for file existence 										|
+|-f  filename	 	 |	Check for regular file existence not a directory 				|
+|-O  filename	 	 |	True if file exists and is owned by the effective user id. 		|
+|-r  filename	 	 |	Check if file is a readable 									|
+|-w  filename	 	 |	Check if file is writable 										|
+|-x  filename	 	 |	Check if file is executable 									|
+|-s  filename	 	 |	Check if file is nonzero size 									|
+| file1 -ef file2    |  Check if file1 same as file2									|
+```bash
+#!/bin/bash
+
+while [ ! -e file1 ]; do
+# Sleep until file1 created
+	sleep 1
+done
+```
+
+## 12. Loops:
+- **for loop**:
+```bash
+#!/bin/bash
+
+# print all of the files and dir in '/var/' dir.
+for f in $( ls /var/ ); do
+	echo $f
+done
+```
+```bash
+# count from 0 till 10
+for ((i = 0 ; i < 10 ; i++)); do
+	echo $i
+done
+```
+
+- **while loop**:
+```bash
+#!/bin/bash
+
+COUNT=6
+# Count from 6 till 0.
+while [ $COUNT -gt 0 ]; do
+	echo Value of count is: $COUNT
+	let COUNT=COUNT-1
+done
+```
+
+```bash
+#!/bin/bash
+# USAGE: This bash script will locate and replace spaces with '_' in this DIR and its subdir.
+
+DIR="."
+# Controlling a loop with bash read command by redirecting STDOUT as
+# a STDIN to while loop
+# find will not truncate filenames containing spaces
+find $DIR -type f | while read file; do
+# using POSIX class [:space:] to find space in the filename
+if [ "$file" = *[[:space:]]* ]; then # the file be anything(*) then space then anything(*) ; *space*
+	# substitute space with "_" character and consequently rename the file
+	mv "$file" `echo $file | tr ' ' '_'`
+fi;
+# end of while loop
+done
+```
+
+- **until loop**:
+```bash
+#!/bin/bash
+
+COUNT=0
+# Count from 0 till 5
+until [ $COUNT -gt 5 ]; do
+	echo Value of count is: $COUNT
+	let COUNT=COUNT+1
+done
+```
