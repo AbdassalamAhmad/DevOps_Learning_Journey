@@ -55,3 +55,18 @@ $ ssh app2 # ssh into app2 and enter the password.
 $ find /home/usersdata/ -type f -user rose -exec cp --parents {} /media \; # use find then exec to execute the command on the result of find command.
 $ # then use copy commands with flag --parents to preserve the directories path.
 ```
+
+## **7. Insatll SElinux:**
+```bash
+$ ssh app2 # ssh into app2 and enter the password.
+$ yum install selinux* # install all required packages.
+$ sestatus # check status of SElinux.
+$ vi /etc/selinux/config # edit SELINUX=disabled to make sure it is sisabled for now as required.
+$ sestatus # make sure it is disabled.
+```
+
+# ** 8. copy file to remote server:**
+```bash
+$ scp /tmp/nautilus.txt.gpg tony@stapp01:/home/data
+$ # enter the password and you're done.
+```
