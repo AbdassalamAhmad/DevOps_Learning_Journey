@@ -1,7 +1,8 @@
 # Bash Script Resources
 
 - I've used [**bash-scripting-tutorial**](https://linuxconfig.org/bash-scripting-tutorial) to learn Bash Scripting basics.
-- I've used [**Bash-Script Cheatsheet**](https://devhints.io/bash) to learn Bash Scripting basics.
+- I've used [**Bash-Script Cheatsheet**](https://devhints.io/bash) to review some syntax.
+- I've tested my knowledge using these [**Assignments**](https://www.emertxe.com/embedded-systems/linux-systems/ls-assignments/)
 
 # Commands I've Learned: 
 
@@ -89,7 +90,7 @@ ARRAY=( 'Debian Linux' ,'Redhat Linux' Ubuntu  Linux )
 ELEMENTS=${#ARRAY[@]} # outputs 4
 
 # print each element in array 
-for (( i=0;i<$ELEMENTS;i++)); do # foe loop like C language.
+for (( i=0;i<$ELEMENTS;i++)); do # for loop like C language.
     echo ${ARRAY[${i}]}
 done 
 ```
@@ -182,6 +183,7 @@ for f in $( ls /var/ ); do
 	echo $f
 done
 ```
+
 ```bash
 # count from 0 till 10
 for ((i = 0 ; i < 10 ; i++)); do
