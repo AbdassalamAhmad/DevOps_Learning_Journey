@@ -65,8 +65,14 @@ $ vi /etc/selinux/config # edit SELINUX=disabled to make sure it is sisabled for
 $ sestatus # make sure it is disabled.
 ```
 
-# ** 8. copy file to remote server:**
+## **8. copy file to remote server:**
 ```bash
 $ scp /tmp/nautilus.txt.gpg tony@stapp01:/home/data
 $ # enter the password and you're done.
+```
+
+## **9. Set up a password-less authentication**
+```bash
+$ ssh-keygen -t rsa # generate an ssh key 
+$ ssh-copy-id  tony@stapp01 # copy the ssh key to all apps.(here i did one only).
 ```
