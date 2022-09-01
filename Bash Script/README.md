@@ -230,3 +230,69 @@ until [ $COUNT -gt 5 ]; do
 	let COUNT=COUNT+1
 done
 ```
+
+## 13. Functions:
+```bash
+#!/bin/bash
+# BASH FUNCTIONS CAN BE DECLARED IN ANY ORDER
+function function_B {
+    echo Function B.
+}
+function function_A {
+    echo $1
+}
+function function_D {
+    echo Function D.
+}
+function function_C {
+    echo $1
+}
+# FUNCTION CALLS
+# Pass parameter to function A
+function_A "Function A."
+function_B
+# Pass parameter to function C
+function_C "Function C."
+function_D
+# output : 
+# Function A.
+# Function B.
+# Function C.
+# Function D.
+```
+
+## 14. Case:
+```bash
+#!/bin/bash
+
+echo -n "Enter the name of a country: "
+read COUNTRY
+
+echo -n "The official language of $COUNTRY is "
+
+case $COUNTRY in
+
+  Lithuania) echo "Lithuanian";;
+
+  Romania | Moldova) echo "Romanian";;
+
+  Italy | "San Marino" | Switzerland | "Vatican City") echo "Italian";;
+
+  *) echo "unknown";; # anything else unknown.
+esac
+```
+
+## 15. Arithmetic Operations:
+```bash
+#!/bin/bash
+ 
+let RESULT1=$1+$2 # Here the addition works
+echo $1+$2=$RESULT1 # Outputs 7+3=10
+
+declare -i RESULT2 # declare a numerical variable.
+RESULT2=$1-$2
+echo $1-$2=$RESULT2 
+
+echo $1*$2=$(($1 * $2)) # the last expression (()) is where the multiplication happened.
+echo 7 % 7 = $[ 7 % 7 ] # the last expression [] is where the modulo happened.
+```
