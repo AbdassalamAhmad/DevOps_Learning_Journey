@@ -1,0 +1,2 @@
+FROM python
+VOLUME [ "/data" ]
