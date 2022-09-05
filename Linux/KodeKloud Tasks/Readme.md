@@ -76,3 +76,9 @@ $ # enter the password and you're done.
 $ ssh-keygen -t rsa # generate an ssh key 
 $ ssh-copy-id  tony@stapp01 # copy the ssh key to all apps.(here i did one only).
 ```
+
+## **10. using sed:**
+```bash
+$ sed 's/\bor\b/their/g' /home/BSD.txt > /home/BSD_REPLACE.txt # change every "or" to "their" without affecting orange and so on.
+$ sed '/\<copyright\>/d' /home/BSD.txt > /home/BSD_DELETE.txt # delete everyline containing the word "copyright".
+```
