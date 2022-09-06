@@ -26,13 +26,13 @@ driver.switch_to.window("secondtab")
   
 # open my web-app and press edit Button.
 driver.get("http://localhost:3000/")
-Edit_Button = driver.find_element("xpath", "/html[1]/body[1]/div[1]/button[1]")
-Edit_Button.click()
+edit_button = driver.find_element("xpath", "/html[1]/body[1]/div[1]/button[1]")
+edit_button.click()
 
 # add Gaming to the interests.
-Gaming = driver.find_element("xpath", "/html[1]/body[1]/div[2]/input[3]")
-Gaming.send_keys(", Gaming.")
+gaming = driver.find_element("xpath", "/html[1]/body[1]/div[2]/input[3]")
+gaming.send_keys(", Gaming.")
 
 # click on Update Button.
-Update_Button= driver.find_element("xpath", "/html[1]/body[1]/div[2]/button[1]")
-Update_Button.click()
+update_button= driver.find_element("xpath", "/html[1]/body[1]/div[2]/button[1]")
+update_button.click()
