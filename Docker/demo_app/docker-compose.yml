@@ -1,5 +1,9 @@
 version: '3.9'
 services:
+  my-app:
+    build: .
+    ports:
+      - 3000:3000
   mongodb:
     image: mongo
     ports:
