@@ -17,5 +17,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker-compose up
+      run: docker-compose -f ./Docker/demo_app/docker-compose.yml up
       
