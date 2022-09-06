@@ -65,3 +65,19 @@ $ docker network ls # Lists all networks.
 $ docker network create mongo-network # create a new network named mongo-network.
 ```
 
+10- **docker rm**: remove a stopped container.
+
+```bash
+$ docekr rm mongoc # delete a stopped container named mongoc.
+$ docekr rm 680 # delete a stopped container by its ID 680.
+```
+
+11- **docker rmi**: remove a docker image.
+
+```bash
+$ docker rmi alpine # remove alpine image.
+$ docker rmi 9c6 # remove alpine image by its ID.
+```
+
+
+
