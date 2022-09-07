@@ -20,11 +20,7 @@ jobs:
 
     - name: Build the Docker image
       run: docker-compose -f ./Docker/demo_app/docker-compose.yml up -d
-    
-    - name: Sleep
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '60s'
+
 
     - name: Check running containers
       run: docker ps -a 
