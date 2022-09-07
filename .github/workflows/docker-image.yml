@@ -15,7 +15,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
     - uses: actions/checkout@v3
+
     - name: Build the Docker image
-      run: docker-compose -f ./Docker/demo_app/docker-compose.yml up &
-      
+      run: docker-compose -f ./Docker/demo_app/docker-compose.yml up -d
+    
+    - name: Sleep
+      uses: jakejarvis/wait-action@master
+        with:
+          time: '60s'
+
+    - name: Check running containers
+      run: docker ps -a 
+    # - name: Login to DockerHub
+    #   uses: docker/login-action@v2
+    #   with:
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    # - name: Build and push
+    #   uses: docker/build-push-action@v3
+    #   with:
+    #     push: true
+    #     tags: user/app:latest
