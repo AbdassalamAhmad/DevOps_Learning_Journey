@@ -30,7 +30,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: ./Docker/demo_app/Dockerfile
+        context: Docker/demo_app/
         push: true
         tags: abod98/my-app:latest
 
