@@ -21,7 +21,6 @@ jobs:
     - name: Build the Docker image
       run: docker-compose -f ./Docker/demo_app/docker-compose.yml up -d
 
-
     - name: Check running containers
       run: docker ps -a 
     # - name: Login to DockerHub
