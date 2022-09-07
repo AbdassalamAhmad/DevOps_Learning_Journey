@@ -18,8 +18,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Build Dokcer Image from Dockerfile.
-      run: docker build ./Docker/demo_app/Dockerfile  --tag abod98/my-app:v1.0 # OR $(date +%s)
+    # - name: Build Dokcer Image from Dockerfile.
+    #   run: docker build ./Docker/demo_app/Dockerfile  --tag abod98/my-app:v1.0 # OR $(date +%s)
     
     - name: Login to DockerHub
       uses: docker/login-action@v2
@@ -30,6 +30,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        context: ./Docker/demo_app/Dockerfile
         push: true
         tags: abod98/my-app:latest
 
