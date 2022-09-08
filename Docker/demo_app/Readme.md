@@ -2,6 +2,10 @@
 This is a simple app to sharpen my skill in docker.
 ## Mode Demo
 
+
+https://user-images.githubusercontent.com/83673888/188954352-6b8eeb9f-3a52-43ae-81b5-119aafdefece.mp4
+
+
 ## How To Try This App
 * Clone this repo to get all the code and files.
 ```bash
