@@ -1,4 +1,4 @@
-# Simple Static Website
+# Simple Static Website Built with GitHub Actions (CI/CD) Pipeline:
 This is a simple app to sharpen my skill in docker.
 ## Mode Demo
 
