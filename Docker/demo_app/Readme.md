@@ -18,7 +18,7 @@ $ docker-compose up # this command will create 3 containers and run them.
 * Now, you can edit the name, email and intersts in the website and see the changes in the mongo-express database page.
 
 
-## Python fun part
+## Python Fun Part
 I've used selenium to open the website and database URLs and edit some fields automatically.
 Before that, I had to open the links myself and edit the fields and then check the dataset to see if the app is connected to the database.
 
