@@ -79,5 +79,11 @@ $ docker rmi alpine # remove alpine image.
 $ docker rmi 9c6 # remove alpine image by its ID.
 ```
 
+12- **docker login**: To get access to private repos.
+```bash
+$ docker login 
+$ docker logout
+```
+
 
 
