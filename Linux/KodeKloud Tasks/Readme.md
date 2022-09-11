@@ -82,3 +82,12 @@ $ ssh-copy-id  tony@stapp01 # copy the ssh key to all apps.(here i did one only)
 $ sed 's/\bor\b/their/g' /home/BSD.txt > /home/BSD_REPLACE.txt # change every "or" to "their" without affecting orange and so on.
 $ sed '/\<copyright\>/d' /home/BSD.txt > /home/BSD_DELETE.txt # delete everyline containing the word "copyright".
 ```
+
+## **11. using cron jobs:**
+```bash
+$ ssh app01
+$ yum install cronie
+$ sudo systemctl start crond
+$ crontab -e # Here you can add the job you want and save.
+$ crontab -l # to check list of cronjobs.
+```
