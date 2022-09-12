@@ -63,8 +63,9 @@
 ## Commands I've learned:
 **minikube commadns:**
 ```bash
-$ minikube start # Start a cluster, and if you don't have kubernetes installed it will install it.
 $ minikube dashboard # start a dashboard with info about pods and deployments AND a lot more.
+
+$ minikube start # Start a cluster, and if you don't have kubernetes installed it will install it.
 $ minikube stop/delete # Stop/delete a cluster.
 $ minikube status # Display status of api, kubelet and kubeconfig.
 
@@ -76,6 +77,7 @@ $ kubectl get pods # Display all of the working pods.
 $ kubectl get services # Display services.
 $ kubectl get replicaset # Display all replicaset.
 $ kubectl get deployment # Display all deployments.
+
 $ kubectl describe pods <podname> # Gives more info about a pod or number of pods.
 $ kubectl describe deployment <deploymentname> # Gives more info about a deployment or number of deployments.
 ```
@@ -83,10 +85,12 @@ $ kubectl describe deployment <deploymentname> # Gives more info about a deploym
 **Create Commands:**
 ```bash
 $ kubectl apply -f <filename.yaml> # Create a deployment from filename.yaml file.
-$ kubectl create deployment <name> --image:image-name #  Create a deployment based on image specified from docker hub.
-$ kubectl edit deployment nginx-depl # Edit configuration of the deployment like image, replicasets or resource limits.
-$ kubectl delete deployment <deploymentname> # Delete the deployment and all of its compnents like pods.
 $ kubectl delete -f nginx.yaml # Delete the deployment of nginx.yaml file.
+
+$ kubectl create deployment <name> --image:image-name #  Create a deployment based on image specified from docker hub.
+$ kubectl delete deployment <deploymentname> # Delete the deployment and all of its compnents like pods.
+$ kubectl edit deployment nginx-depl # Edit configuration of the deployment like image, replicasets or resource limits.
+
 $ kubectl rollout restart deploymnet <deploymnet-name>  # restart all pods of that deploymnet.
 ```
 **Debugging Commands:**
