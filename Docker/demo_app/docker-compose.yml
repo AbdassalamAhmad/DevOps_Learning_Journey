@@ -4,17 +4,17 @@ services:
   # my-app:
   #   build: .
   #   ports:
-  #     - 3000:3000
+  #     - 3000:3000 # host:container
   
   # if you want to pull it from docker hub (CI) from github actions.
   my-app:
     image: abod98/my-app:latest # Don't forget to sign in if you make it PRIVATE.
     ports: 
-      - 3000:3000
+      - 3000:3000 # host:container
   mongodb:
     image: mongo
     ports:
-      - 27017:27017
+      - 27017:27017 # host:container
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
@@ -24,7 +24,7 @@ services:
     image: mongo-express
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
-      - 8080:8081
+      - 8080:8081 # host:container
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
