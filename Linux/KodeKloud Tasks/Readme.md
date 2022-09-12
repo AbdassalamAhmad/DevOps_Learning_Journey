@@ -65,7 +65,7 @@ $ vi /etc/selinux/config # edit SELINUX=disabled to make sure it is sisabled for
 $ sestatus # make sure it is disabled.
 ```
 
-## **8. copy file to remote server:**
+## **8. copy file to remote server using secure copy:**
 ```bash
 $ scp /tmp/nautilus.txt.gpg tony@stapp01:/home/data
 $ # enter the password and you're done.
