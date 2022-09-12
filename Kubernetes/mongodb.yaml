@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb        # Important to be the same
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb      # Important to be the same
+  template:
+    metadata:
+      labels:
+        app: mongodb    # Important to be the same
+    spec:
+      containers:
+      - name: mongodb    
+        image: mongo
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: 
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: 
+        ports:
+        - containerPort: 27017 # This port is the port opened on the container not the host.
