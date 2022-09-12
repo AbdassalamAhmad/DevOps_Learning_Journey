@@ -77,6 +77,7 @@ $ kubectl get pods -o wide # Display all of the working pods and in wide to see 
 $ kubectl get services # Display services.
 $ kubectl get replicaset # Display all replicaset.
 $ kubectl get deployment # Display all deployments.
+$ kubectl get secrets # Display all secrets.
 
 $ kubectl describe pods <podname> # Gives more info about a pod or number of pods.
 $ kubectl describe deployment <deploymentname> # Gives more info about a deployment or number of deployments.
