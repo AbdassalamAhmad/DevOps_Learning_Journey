@@ -73,7 +73,7 @@ $ minikube status # Display status of api, kubelet and kubeconfig.
 **Get information / Describe Commands:**
 ```bash
 $ kubectl get nodes # Display all of the nodes, for minikube only one node (master and worker in one node).
-$ kubectl get pods # Display all of the working pods.
+$ kubectl get pods -o wide # Display all of the working pods and in wide to see its IP address.
 $ kubectl get services # Display services.
 $ kubectl get replicaset # Display all replicaset.
 $ kubectl get deployment # Display all deployments.
