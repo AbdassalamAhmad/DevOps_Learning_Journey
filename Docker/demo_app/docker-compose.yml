@@ -12,7 +12,7 @@ services:
     ports: 
       - 3000:3000 # host:container
   mongodb:
-    image: mongo
+    image: mongo:6.0.1
     ports:
       - 27017:27017 # host:container
     environment:
@@ -21,7 +21,7 @@ services:
     volumes:
       - mongo-data:/data/db
   mongo-express:
-    image: mongo-express
+    image: mongo-express:1.0.0-alpha.4
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
       - 8080:8081 # host:container
