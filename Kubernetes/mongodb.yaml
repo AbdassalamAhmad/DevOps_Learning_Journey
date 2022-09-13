@@ -16,11 +16,30 @@ spec:
     spec:
       containers:
       - name: mongodb    
-        image: mongo
+        image: mongo:6.0.1
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
-          value: 
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-user
         - name: MONGO_INITDB_ROOT_PASSWORD
-          value: 
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
         ports:
         - containerPort: 27017 # This port is the port opened on the container not the host.
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017 # port that service listen requests from. To change this port change mongo express port that direct to mongodb.
+      targetPort: 27017 # port to container
