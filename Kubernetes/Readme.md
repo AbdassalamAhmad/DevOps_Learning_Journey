@@ -69,6 +69,8 @@ $ minikube start # Start a cluster, and if you don't have kubernetes installed i
 $ minikube stop/delete # Stop/delete a cluster.
 $ minikube status # Display status of api, kubelet and kubeconfig.
 
+$ minikube load image mongo:6.0.1 # IMPORTANT: when applying deployment, it fail without using this command due to high size.
+$ minikube service <servicename> # to make a service have external IP address.
 ```
 **Get information / Describe Commands:**
 ```bash
@@ -81,6 +83,7 @@ $ kubectl get secrets # Display all secrets.
 
 $ kubectl describe pods <podname> # Gives more info about a pod or number of pods.
 $ kubectl describe deployment <deploymentname> # Gives more info about a deployment or number of deployments.
+$ kubectl describe service <servicename> # Gives info about the service like IP address of pod and ports.
 ```
 
 **Create Commands:**
