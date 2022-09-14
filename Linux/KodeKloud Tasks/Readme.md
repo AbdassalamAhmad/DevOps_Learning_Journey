@@ -83,11 +83,18 @@ $ sed 's/\bor\b/their/g' /home/BSD.txt > /home/BSD_REPLACE.txt # change every "o
 $ sed '/\<copyright\>/d' /home/BSD.txt > /home/BSD_DELETE.txt # delete everyline containing the word "copyright".
 ```
 
-## **11. using cron jobs:**
+## **11. Using cron jobs:**
 ```bash
 $ ssh app01
 $ yum install cronie
 $ sudo systemctl start crond
 $ crontab -e # Here you can add the job you want and save.
 $ crontab -l # to check list of cronjobs.
+```
+
+## **12. Add sudo privilages to a user with no password required:**
+```bash
+$ ssh app1,2,3
+$ sudo visudo # enter sudouers file to edit and add user
+$ # add user in the last line with no password like this : user    ALL=(ALL)   NOPASSWD:ALL
 ```
