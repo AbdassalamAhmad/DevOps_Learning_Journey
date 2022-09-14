@@ -34,31 +34,31 @@
     - Usually are databases stored outside of K8s cluster like on cloud.
 
 ## Kubernetes Architecture: 
-    - **Worker Nodes:**
-        1. Kubelet: 
-            - Assign resources to the Node.
-            - Interacts with the container runtime (like pods do with container).
-        2. Kube Proxy: Forwards the request intelligently to a specific pod.
-        3. Container Runtime: Like Docker, that manages containers.
+- **Worker Nodes:**
+    1. Kubelet: 
+        - Assign resources to the Node.
+        - Interacts with the container runtime (like pods do with container).
+    2. Kube Proxy: Forwards the request intelligently to a specific pod.
+    3. Container Runtime: Like Docker, that manages containers.
 
-    - **Master Node:**
-        1. API Server: 
-            - Cluster gateway to clients. (clients talk to cluster through API server using UI dashbaord, API OR kubectl.)
-            - Gets the commands of update or query from the cluster.
-            - Runs Authentication.
-        2. Scheduler:
-            - Gets Instructions from API server and decide intelligently on which node to perform it. [29:40]
-            - Kubelet is the one who perform the instruction.
-        3. Controller Manager:
-            - Detect cluster state changes: like crashing some pod.
-            - Sends request to Scheduler when pod die to recreate it.
-        4. etcd: 
-            - Cluster changes and data are stored in etcd.
-            - Data like how many pods and state and helth of the pods are stored in it.
+- **Master Node:**
+    1. API Server: 
+        - Cluster gateway to clients. (clients talk to cluster through API server using UI dashbaord, API OR kubectl.)
+        - Gets the commands of update or query from the cluster.
+        - Runs Authentication.
+    2. Scheduler:
+        - Gets Instructions from API server and decide intelligently on which node to perform it. [29:40]
+        - Kubelet is the one who perform the instruction.
+    3. Controller Manager:
+        - Detect cluster state changes: like crashing some pod.
+        - Sends request to Scheduler when pod die to recreate it.
+    4. etcd: 
+        - Cluster changes and data are stored in etcd.
+        - Data like how many pods and state and helth of the pods are stored in it.
 
-    - **Minikube**: 
-        - Minikube create a virtual machine on your laptop to start a node server.
-        - Master and Node processes runs on the same node server to solve resources problem.
+- **Minikube**: 
+    - Minikube create a virtual machine on your laptop to start a node server.
+    - Master and Node processes runs on the same node server to solve resources problem.
 
 ## Commands I've learned:
 **minikube commadns:**
@@ -110,25 +110,25 @@ $ kubectl top node/pod # Returns current CPU and memory usage for a cluster’s 
 
 ## Namespaces:
 ### Benefits of Using Namespaces:
-    1. Resources grouped together in namespaces: 
-        - Databases-namespace.
-        - Monitoring-namespace.
-        - Logging-namespace.
-        - Main-Application-namespace.
-    2. Resolving conflicts from many teams:
-        - Putting every team in a namespace to avoid overwriting.
-    3. Resources Sharing:
-        - You don't have to install same app on two different cluster.
-        - Install it on same cluster with two different namespaces.
-        - Blue/Green Deployment.
-    4. Resources and access limits for different teams:
-        - Team 1 can't remove files from team 2.
-        - team 1 can't use more ram than limit to not interrupt team 1.
+1. Resources grouped together in namespaces: 
+    - Databases-namespace.
+    - Monitoring-namespace.
+    - Logging-namespace.
+    - Main-Application-namespace.
+2. Resolving conflicts from many teams:
+    - Putting every team in a namespace to avoid overwriting.
+3. Resources Sharing:
+    - You don't have to install same app on two different cluster.
+    - Install it on same cluster with two different namespaces.
+    - Blue/Green Deployment.
+4. Resources and access limits for different teams:
+    - Team 1 can't remove files from team 2.
+    - team 1 can't use more ram than limit to not interrupt team 1.
 
 ### Sharing Resources Rules:
-    - ConfigMaps and Secrets can't be shared through different namespaces.
-    - Services can be shared through different namespaces.
-    - Columes and nodes can't live in namesspaces.
+- ConfigMaps and Secrets can't be shared through different namespaces.
+- Services can be shared through different namespaces.
+- Columes and nodes can't live in namesspaces.
 
 ### How to Create Namespace:
 ```yaml
