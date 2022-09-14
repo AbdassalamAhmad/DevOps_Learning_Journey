@@ -34,31 +34,31 @@
     - Usually are databases stored outside of K8s cluster like on cloud.
 
 ## Kubernetes Architecture: 
-- **Worker Nodes:**
-    1. Kubelet: 
-        - Assign resources to the Node.
-        - Interacts with the container runtime (like pods do with container).
-    2. Kube Proxy: Forwards the request intelligently to a specific pod.
-    3. Container Runtime: Like Docker, that manages containers.
+    - **Worker Nodes:**
+        1. Kubelet: 
+            - Assign resources to the Node.
+            - Interacts with the container runtime (like pods do with container).
+        2. Kube Proxy: Forwards the request intelligently to a specific pod.
+        3. Container Runtime: Like Docker, that manages containers.
 
-- **Master Node:**
-    1. API Server: 
-        - Cluster gateway to clients. (clients talk to cluster through API server using UI dashbaord, API OR kubectl.)
-        - Gets the commands of update or query from the cluster.
-        - Runs Authentication.
-    2. Scheduler:
-        - Gets Instructions from API server and decide intelligently on which node to perform it. [29:40]
-        - Kubelet is the one who perform the instruction.
-    3. Controller Manager:
-        - Detect cluster state changes: like crashing some pod.
-        - Sends request to Scheduler when pod die to recreate it.
-    4. etcd: 
-        - Cluster changes and data are stored in etcd.
-        - Data like how many pods and state and helth of the pods are stored in it.
+    - **Master Node:**
+        1. API Server: 
+            - Cluster gateway to clients. (clients talk to cluster through API server using UI dashbaord, API OR kubectl.)
+            - Gets the commands of update or query from the cluster.
+            - Runs Authentication.
+        2. Scheduler:
+            - Gets Instructions from API server and decide intelligently on which node to perform it. [29:40]
+            - Kubelet is the one who perform the instruction.
+        3. Controller Manager:
+            - Detect cluster state changes: like crashing some pod.
+            - Sends request to Scheduler when pod die to recreate it.
+        4. etcd: 
+            - Cluster changes and data are stored in etcd.
+            - Data like how many pods and state and helth of the pods are stored in it.
 
-- **Minikube**: 
-    - Minikube create a virtual machine on your laptop to start a node server.
-    - Master and Node processes runs on the same node server to solve resources problem.
+    - **Minikube**: 
+        - Minikube create a virtual machine on your laptop to start a node server.
+        - Master and Node processes runs on the same node server to solve resources problem.
 
 ## Commands I've learned:
 **minikube commadns:**
