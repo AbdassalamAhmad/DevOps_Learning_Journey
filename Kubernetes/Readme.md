@@ -80,6 +80,7 @@ $ kubectl get services # Display services.
 $ kubectl get replicaset # Display all replicaset.
 $ kubectl get deployment # Display all deployments.
 $ kubectl get secrets # Display all secrets.
+$ kubectl get namespace # Display all namespaces.
 
 $ kubectl describe pods <podname> # Gives more info about a pod or number of pods.
 $ kubectl describe deployment <deploymentname> # Gives more info about a deployment or number of deployments.
@@ -91,6 +92,7 @@ $ kubectl describe service <servicename> # Gives info about the service like IP 
 $ kubectl apply -f <filename.yaml> # Create a deployment from filename.yaml file.
 $ kubectl delete -f nginx.yaml # Delete the deployment of nginx.yaml file.
 
+$ kubectl create namespace <name> # create a namespace
 $ kubectl create deployment <name> --image:image-name #  Create a deployment based on image specified from docker hub.
 $ kubectl delete deployment <deploymentname> # Delete the deployment and all of its compnents like pods.
 $ kubectl edit deployment nginx-depl # Edit configuration of the deployment like image, replicasets or resource limits.
@@ -106,3 +108,35 @@ $ # This command will enter us into the nginx container shell.
 $ kubectl top node/pod # Returns current CPU and memory usage for a cluster’s pods or nodes
 ```
 
+## Namespaces:
+### Benefits of Using Namespaces:
+    1. Resources grouped together in namespaces: 
+        - Databases-namespace.
+        - Monitoring-namespace.
+        - Logging-namespace.
+        - Main-Application-namespace.
+    2. Resolving conflicts from many teams:
+        - Putting every team in a namespace to avoid overwriting.
+    3. Resources Sharing:
+        - You don't have to install same app on two different cluster.
+        - Install it on same cluster with two different namespaces.
+        - Blue/Green Deployment.
+    4. Resources and access limits for different teams:
+        - Team 1 can't remove files from team 2.
+        - team 1 can't use more ram than limit to not interrupt team 1.
+
+### Sharing Resources Rules:
+    - ConfigMaps and Secrets can't be shared through different namespaces.
+    - Services can be shared through different namespaces.
+    - Columes and nodes can't live in namesspaces.
+
+### How to Create Namespace:
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongodb-configmap
+  namespace: my-namespace # Here we Create a namespace and assign this ConfigMap to it.
+data:
+  database_url: mongodb-service.database # .database refer to a namespace called database 
+```
