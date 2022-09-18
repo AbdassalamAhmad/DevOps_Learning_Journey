@@ -71,6 +71,8 @@ $ minikube status # Display status of api, kubelet and kubeconfig.
 
 $ minikube load image mongo:6.0.1 # IMPORTANT: when applying deployment, it fail without using this command due to high size.
 $ minikube service <servicename> # to make a service have external IP address.
+$ minikube addons enable ingress
+$ minikube tunnel # your ingress resources would be available at "127.0.0.1"
 ```
 **Get information / Describe Commands:**
 ```bash
@@ -81,6 +83,7 @@ $ kubectl get replicaset # Display all replicaset.
 $ kubectl get deployment # Display all deployments.
 $ kubectl get secrets # Display all secrets.
 $ kubectl get namespace # Display all namespaces.
+$ kubectl get ingress # Display all Ingress.
 
 $ kubectl describe pods <podname> # Gives more info about a pod or number of pods.
 $ kubectl describe deployment <deploymentname> # Gives more info about a deployment or number of deployments.
@@ -140,3 +143,28 @@ metadata:
 data:
   database_url: mongodb-service.database # .database refer to a namespace called database 
 ```
+- How to get resources of a namespace?
+1. $ kubectl get configmap -n my-namespace
+2. install kubectx and then use kubens from [here](https://github.com/ahmetb/kubectx#installation).
+
+## Ingress:
+Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. <br>
+Traffic routing is controlled by rules defined on the Ingress resource.
+### Ingress Controller:
+- Evaluate all of the rules in ingress yaml file.
+- Manages network redirections.
+- It is Entrypoint to the cluster.
+- I've used K8s Inginx Ingress Controller.
+- You need to have LoadBalancer before Ingress Controller [02:10:12].
+- Installation : $ minikube addons enable ingress
+- You can configure default error message [02:19:13].
+- You can add multiple paths and map it to different services [02:20:23].
+- You can add security to your url to begin with https [02:22:40].
+- NOTE: I've a problem in running it on windows 10.
+
+## Helm:
+### Helm Charts:
+- It's like Docker Hub that has docker containers for specific apps.
+- It has Bundle of YAML files for different softwares like database or monitoring or logging apps.
+- You can create your own helm charts with Helm.
+- You cna pull others helm charts.
