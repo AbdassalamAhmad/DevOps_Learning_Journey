@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dashboard-ingress
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/ingress.class: "nginx" # Ingress Controller
+spec:
+  rules:
+  - host: www.gg.com # Don't forget to add it in hosts file. ## Map domain name to node's IP address
+    http:               # a protocol to forward incoming request to internal service.
+      paths:
+      - path: /
+        pathType: Exact  
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port: 
+              number: 80 # port to service. same as service port.
