@@ -1,6 +1,7 @@
 # Kubernetes Resources
 
 - I've used **Kubernetes Tutorial for Beginners** [**a YouTube course**](https://www.youtube.com/watch?v=X48VuDVv0do) from 'TechWorld with Nana' YouTube channel BY [Nana Janashia](https://www.linkedin.com/in/nana-janashia/).
+- I've used this [**KodeKloud Tutorial**](https://www.youtube.com/watch?v=kJscDZfHXrQ) to learn about Helm commands.
 
 ## Kubernetes Components:
 - **Pods, Replicas, and Deployments**: 
@@ -144,7 +145,7 @@ data:
   database_url: mongodb-service.database # .database refer to a namespace called database 
 ```
 - How to get resources of a namespace?
-1. $ kubectl get configmap -n my-namespace
+1. $ kubectl get all -n my-namespace
 2. install kubectx and then use kubens from [here](https://github.com/ahmetb/kubectx#installation).
 
 ## Ingress:
@@ -167,4 +168,21 @@ Traffic routing is controlled by rules defined on the Ingress resource.
 - It's like Docker Hub that has docker containers for specific apps.
 - It has Bundle of YAML files for different softwares like database or monitoring or logging apps.
 - You can create your own helm charts with Helm.
-- You cna pull others helm charts.
+- You can pull others helm charts.
+- You don't have to run multiple "$ kubectl apply -f" commands.
+```bash
+$ helm create mongo-chart # create a dir named mongo-chart with all files for you to edit.
+$ helm install <chartname> # Install all of the components into kubernetes cluster.
+$ helm upgrade <chartname> <foldername> # Upgrade new valuse into the cluster.
+$ helm rollback <chartname> <REVISION> # rollback to a specific previous version.
+$ helm history RELEASE # See revision numbers.
+$ helm get manifest <chartname> # Display all yaml files in the current version.
+$ helm uninstall <chartname> # Uninstall all the components of the cluster.
+$ helm search hub wordpress # search for wordpress charts in the hub.
+```
+
+## Volumes:
+- There are three components : PV, PVC, SC. (Presistant Volume, Presistant Volume Claim, Source Control )
+- PVC asks for volume storage from SC.
+- SC has internal and external provisioner to get the requested storage.
+- PV gets created by SC with the required storage.
