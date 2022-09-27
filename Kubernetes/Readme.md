@@ -2,6 +2,7 @@
 
 - I've used **Kubernetes Tutorial for Beginners** [**a YouTube course**](https://www.youtube.com/watch?v=X48VuDVv0do) from 'TechWorld with Nana' YouTube channel BY [Nana Janashia](https://www.linkedin.com/in/nana-janashia/).
 - I've used this [**KodeKloud Tutorial**](https://www.youtube.com/watch?v=kJscDZfHXrQ) to learn about Helm commands.
+- I've used this [**Helm Docs**](https://helm.sh/docs/howto/charts_tips_and_tricks/) to learn more about Helm commands.
 
 ## Kubernetes Components:
 - **Pods, Replicas, and Deployments**: 
@@ -170,12 +171,13 @@ Traffic routing is controlled by rules defined on the Ingress resource.
 - You can create your own helm charts with Helm.
 - You can pull others helm charts.
 - You don't have to run multiple "$ kubectl apply -f" commands.
+- You can delete all of the kubernetes cluster components with one command (uninstall).
 ```bash
 $ helm create mongo-chart # create a dir named mongo-chart with all files for you to edit.
-$ helm install <chartname> # Install all of the components into kubernetes cluster.
+$ helm install <chartname> <folderpath> # Install all of the components into kubernetes cluster.
 $ helm upgrade <chartname> <foldername> # Upgrade new valuse into the cluster.
 $ helm rollback <chartname> <REVISION> # rollback to a specific previous version.
-$ helm history RELEASE # See revision numbers.
+$ helm history <chartname> # See revision numbers.
 $ helm get manifest <chartname> # Display all yaml files in the current version.
 $ helm uninstall <chartname> # Uninstall all the components of the cluster.
 $ helm search hub wordpress # search for wordpress charts in the hub.
