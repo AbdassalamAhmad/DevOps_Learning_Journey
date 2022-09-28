@@ -49,7 +49,7 @@
         - Gets the commands of update or query from the cluster.
         - Runs Authentication.
     2. Scheduler:
-        - Gets Instructions from API server and decide intelligently on which node to perform it. [29:40]
+        - Gets Instructions (deploying a new pod) from API server and decide intelligently on which node to perform it. [29:40]
         - Kubelet is the one who perform the instruction.
     3. Controller Manager:
         - Detect cluster state changes: like crashing some pod.
