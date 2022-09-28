@@ -128,7 +128,7 @@ $ kubectl top node/pod # Returns current CPU and memory usage for a cluster’s 
     - Blue/Green Deployment.
 4. Resources and access limits for different teams:
     - Team 1 can't remove files from team 2.
-    - team 1 can't use more ram than limit to not interrupt team 1.
+    - team 1 can't use more ram than limit to not interrupt team 2.
 
 ### Sharing Resources Rules:
 - ConfigMaps and Secrets can't be shared through different namespaces.
