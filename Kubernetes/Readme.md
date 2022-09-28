@@ -31,7 +31,7 @@
     - You can store data on local machine or remote like AWS.
 
 - **StatefulSet**:
-    - Used for replicating stateful apps like database.
+    - It's like deployments, but Used for replicating stateful apps like database.
     - It's hard not like replicas.
     - Usually are databases stored outside of K8s cluster like on cloud.
 
