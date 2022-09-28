@@ -1,0 +1,7 @@
+# This is the Inventory File for Ansible located at /etc/ansible/hosts .
+[control]
+control
+
+[nodes] 
+node1
+node2
