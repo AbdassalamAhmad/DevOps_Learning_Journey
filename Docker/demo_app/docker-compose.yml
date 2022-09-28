@@ -22,6 +22,8 @@ services:
       - mongo-data:/data/db
   mongo-express:
     image: mongo-express:1.0.0-alpha.4
+    #depends_on:
+      #- serviceName
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
       - 8080:8081 # host:container
