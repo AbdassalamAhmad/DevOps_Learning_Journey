@@ -133,7 +133,7 @@ $ kubectl top node/pod # Returns current CPU and memory usage for a cluster’s 
 ### Sharing Resources Rules:
 - ConfigMaps and Secrets can't be shared through different namespaces.
 - Services can be shared through different namespaces.
-- Columes and nodes can't live in namesspaces.
+- Volumes and nodes can't live in namespaces.
 
 ### How to Create Namespace:
 ```yaml
