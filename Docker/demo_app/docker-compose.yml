@@ -26,8 +26,8 @@ services:
     ports:
       - 8080:8081 # host:container
     environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin # You may store theese data as variables in SECRETS.
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password # You may store theese data as variables in SECRETS.
       - ME_CONFIG_MONGODB_SERVER=mongodb # make sure to include this line and use the same container name as mongo.
 volumes:
  mongo-data:
