@@ -31,7 +31,7 @@
     - You can store data on local machine or remote like AWS.
 
 - **StatefulSet**:
-    - Used for replicating stateful apps like database.
+    - It's like deployments, but Used for replicating stateful apps like database.
     - It's hard not like replicas.
     - Usually are databases stored outside of K8s cluster like on cloud.
 
@@ -49,7 +49,7 @@
         - Gets the commands of update or query from the cluster.
         - Runs Authentication.
     2. Scheduler:
-        - Gets Instructions from API server and decide intelligently on which node to perform it. [29:40]
+        - Gets Instructions (deploying a new pod) from API server and decide intelligently on which node to perform it. [29:40]
         - Kubelet is the one who perform the instruction.
     3. Controller Manager:
         - Detect cluster state changes: like crashing some pod.
@@ -128,12 +128,12 @@ $ kubectl top node/pod # Returns current CPU and memory usage for a cluster’s 
     - Blue/Green Deployment.
 4. Resources and access limits for different teams:
     - Team 1 can't remove files from team 2.
-    - team 1 can't use more ram than limit to not interrupt team 1.
+    - team 1 can't use more ram than limit to not interrupt team 2.
 
 ### Sharing Resources Rules:
 - ConfigMaps and Secrets can't be shared through different namespaces.
 - Services can be shared through different namespaces.
-- Columes and nodes can't live in namesspaces.
+- Volumes and nodes can't live in namespaces.
 
 ### How to Create Namespace:
 ```yaml
