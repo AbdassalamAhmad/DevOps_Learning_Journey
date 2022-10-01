@@ -1,3 +1,5 @@
 Vagrant/.vagrant/
 Docker/demo_app/py/automation/
 node_modules
+chromedriver.exe
+.vscode
