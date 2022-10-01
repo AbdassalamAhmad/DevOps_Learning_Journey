@@ -19,7 +19,7 @@ So that you can find most important commands and the benefit of every tool I'm u
 5. **Grafana {To-Do}**: for Visualization.
 
 ## Programming Languages:
-1. **Python**: I've used it to automate most repetitive tasks.
+1. [**Python**](https://github.com/AbdassalamAhmad/DevOps_Learning_Journey/tree/main/Python): I've used it to automate most repetitive tasks.
 2. [**Bash Script**](https://github.com/AbdassalamAhmad/DevOps_Learning_Journey/tree/main/Bash%20Script): I've used it to automate most repetitive tasks.
 
 ## Operating System & Source Control:
