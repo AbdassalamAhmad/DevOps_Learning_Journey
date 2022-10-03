@@ -63,12 +63,12 @@
     - Master and Node processes runs on the same node server to solve resources problem.
 
 ## Commands I've learned:
-**minikube commadns:**
+**minikube commands:**
 ```bash
 $ minikube dashboard # start a dashboard with info about pods and deployments AND a lot more.
 
 $ minikube start # Start a cluster, and if you don't have kubernetes installed it will install it.
-$ minikube stop/delete # Stop/delete a cluster.
+$ minikube stop/delete # Stop / Delete a cluster.
 $ minikube status # Display status of api, kubelet and kubeconfig.
 
 $ minikube load image mongo:6.0.1 # IMPORTANT: when applying deployment, it fail without using this command due to high size.
