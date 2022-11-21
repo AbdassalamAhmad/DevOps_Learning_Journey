@@ -85,5 +85,32 @@ $ docker login
 $ docker logout
 ```
 
+13- **Docker Volumes**: Tp presist data in containers.
+```bash
+# 1- Bind-Mount: mount local folder into a container like this.
+$ docker run -dit -v e:\devops:/app/code alpine:latest
+# 2- Docker_Volume
+$ docker run -dit -v my-volume:/app/code alpine:latest # this volume will be inside docker directory and every volume created in this way will be in same directory.
+```
+
+14- **Volumes in Dokcer-Compose**:
+```yml
+services:
+  backend:
+    image: awesome/backend
+    volumes:
+      - type: volume
+        source: db-data
+        target: /data
+        volume:
+          nocopy: true
+      - type: bind
+        source: /var/run/postgres/postgres.sock
+        target: /var/run/postgres/postgres.sock
+
+volumes:
+  db-data:
+```
+
 
 
