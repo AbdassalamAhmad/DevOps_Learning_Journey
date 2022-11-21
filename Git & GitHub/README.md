@@ -104,7 +104,7 @@ $ git push -f # if you want to update the history of a remote repo you should fo
 ```bash
 $ git stash # hide all of your work, so that you can do checkout to other branch and complete your work.
 $ git stash list # shows all stashes 
-$ git stash show stash@{0} # show the lastest stash i made.
+$ git stash show "stash@{0}" # show the lastest stash i made. use "" to avoid shell escaping curly brackets.
 $ git stash apply # apply last stash made, without removing it from stash list.
 $ git  stash pop # apply last stash, and delete it from stash list.
 ```
