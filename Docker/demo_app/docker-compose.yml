@@ -1,5 +1,6 @@
 version: '3.9'
 services:
+
   # if you want to build it locally
   # my-app:
   #   build: .
@@ -11,6 +12,8 @@ services:
     image: abod98/my-app:latest # Don't forget to sign in if you make it PRIVATE.
     ports: 
       - 3000:3000 # host:container
+  
+  
   mongodb:
     image: mongo:6.0.1
     ports:
@@ -20,10 +23,12 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
       - mongo-data:/data/db
+  
+  
   mongo-express:
     image: mongo-express:1.0.0-alpha.4
-    #depends_on:
-      #- serviceName
+    # depends_on:
+      #- (mongodb) Container Name.
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
       - 8080:8081 # host:container
@@ -31,6 +36,8 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin # You may store theese data as variables in SECRETS.
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password # You may store theese data as variables in SECRETS.
       - ME_CONFIG_MONGODB_SERVER=mongodb # make sure to include this line and use the same container name as mongo.
+
+
 volumes:
  mongo-data:
     driver: local
