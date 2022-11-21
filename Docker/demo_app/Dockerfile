@@ -14,3 +14,7 @@ COPY . .
 EXPOSE 3000
 
 CMD ["node", "server.js"]
+
+
+#ENTRYPOINT ["echo"]  (source command)
+#CMD [ "Hello, world!"] (args for source command)
