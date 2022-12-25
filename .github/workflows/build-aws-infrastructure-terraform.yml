@@ -28,7 +28,10 @@ jobs:
  
     - name: Terraform Init
       id: init
-      run: terraform init
+      run: |-
+        export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+        export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+        terraform init
       working-directory: ./Terraform
     
     # Checks that all Terraform configuration files adhere to a canonical format
