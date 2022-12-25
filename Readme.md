@@ -1,7 +1,6 @@
 # DevOps Roadmap
 
-![image](https://user-images.githubusercontent.com/83673888/188850169-05fd0269-5a84-41a0-9cfc-06370611c400.png)
-
+![image](https://user-images.githubusercontent.com/83673888/209457108-c405d76f-ec9c-41e3-ac89-81aa99488a5b.png)
 
 
 
