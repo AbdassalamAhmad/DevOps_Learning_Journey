@@ -5,8 +5,8 @@
 #   rsa_bits  = 4096
 # }
 
-# resource "aws_key_pair" "iti_ssh_key" {
-#   key_name   = "iti_lab_key"
+# resource "aws_key_pair" "ssh_key" {
+#   key_name   = "ssh_lab_key"
 #   public_key = tls_private_key.project_key.public_key_openssh
 
 # }
