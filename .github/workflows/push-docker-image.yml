@@ -35,3 +35,6 @@ jobs:
     #   run: |
     #     docker-compose -f ./Docker/demo_app/docker-compose.yml up -d
     #     docker ps -a 
+
+  # publish:
+  #   needs: build # here we specify who start first to make sure build is complete before publish.
