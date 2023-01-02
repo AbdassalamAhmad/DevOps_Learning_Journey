@@ -46,7 +46,7 @@ jobs:
       run: |-
         terraform plan \
         -var="public_key=$EC2_PUBLIC_SSH_KEY" \
-        --var-file ./prod.tfvars \
+        --var-file ./prod_values.tfvars \
         -out=PLAN       
       working-directory: ./Terraform
 
