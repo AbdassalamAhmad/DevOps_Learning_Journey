@@ -1,4 +1,4 @@
-#---------------- Betwork Module ---------------------
+#---------------- Network Module ---------------------
 module "network" {
   source                    = "./networking"
   vpc_cidr                  = var.vpc_cidr

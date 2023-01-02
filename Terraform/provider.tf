@@ -8,6 +8,6 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.region
-  #profile = "default"
+  region = var.region
+  #profile = "default" # removing this line solve an issue in github actions. # this can be used for different aws accounts
 }

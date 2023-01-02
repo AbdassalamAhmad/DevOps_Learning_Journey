@@ -1,7 +1,7 @@
 #-------------------------- Security Group For Instance --------------------------#
 
 resource "aws_security_group" "InstanceSG" {
-  name = "allow_http_instance"
+  name = "ec2_security_group"
 
   vpc_id = module.network.my_vpc_id
 
@@ -9,6 +9,14 @@ resource "aws_security_group" "InstanceSG" {
     description = "allow http from ALL"
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow inbound traffic on port 22 (SSH)
+  ingress {
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -27,7 +35,7 @@ resource "aws_security_group" "InstanceSG" {
 #-------------------------- Security Group For ALB --------------------------#
 
 resource "aws_security_group" "ALBSG" {
-  name = "allow_http_ALB"
+  name = "alb_security_group"
 
   vpc_id = module.network.my_vpc_id
 
@@ -35,6 +43,14 @@ resource "aws_security_group" "ALBSG" {
     description = "allow http from ALL"
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow inbound traffic on port 22 (SSH)
+  ingress {
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
