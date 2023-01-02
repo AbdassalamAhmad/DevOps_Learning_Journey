@@ -7,8 +7,11 @@ on:
     branches: [ "main" ]
 
 env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS User Credentials.
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
+  EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
+  EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
+
 
 
 
@@ -16,7 +19,10 @@ env:
 jobs:
   build-aws:
     runs-on: ubuntu-latest
-
+    outputs: # used to reference in later job
+      BASTION_PUBLIC_IP: ${{ steps.get-IPs.outputs.bastion_public_ip}}
+      EC2_PRIVATE_IP: ${{ steps.get-IPs.outputs.application_private_ip_1}}    
+    
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -36,9 +42,10 @@ jobs:
       run: terraform fmt -check
 
     - name: Terraform Plan
-      id: plan
+      id: plan # we can do terraform plan -destroy to destroy all resources
       run: |-
         terraform plan \
+        -var="public_key=$EC2_PUBLIC_SSH_KEY" \
         --var-file ./prod.tfvars \
         -out=PLAN       
       working-directory: ./Terraform
@@ -48,3 +55,22 @@ jobs:
       id: apply
       run: terraform apply "PLAN"
       working-directory: ./Terraform
+
+    - name: set-outputs
+      id: get-IPs
+      run: |-
+        echo "::set-output name=bastion_public_ip::$(terraform output bastion_public_ip)"
+        echo "::set-output name=application_private_ip_1::$(terraform output application_private_ip_1)"
+
+
+    - name: Connect to Private EC2
+      run: |-
+        ssh -i $EC2_PRIVATE_SSH_KEY -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$APPLICATION_PRIVATE_IP_1 --yes
+        mkdir my_app
+        cd ./my_app
+        touch new_file.txt
+      env:
+        BASTION_PUBLIC_IP: ${{ steps.get-IPs.outputs.bastion_public_ip }}
+        APPLICATION_PRIVATE_IP_1: ${{ steps.get-IPs.outputs.application_private_ip_1 }}
+
+# ssh into ec2 public bastion then destroy it once done  using terraform destroy resource command and it needs the above commands to finish
