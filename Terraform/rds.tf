@@ -1,4 +1,4 @@
-# #----------------------------RDS----------------------------#
+# #---------------------------- RDS ----------------------------#
 # resource "aws_db_instance" "mysql_instance" {
 #   allocated_storage = 10
 #   db_name           = var.db_name
