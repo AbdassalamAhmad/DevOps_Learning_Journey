@@ -30,7 +30,8 @@ jobs:
 
     
     - name: List files
-      run: ls ./Terraform
+      run: |-
+        ls -R
 
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
@@ -45,6 +46,7 @@ jobs:
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt -check
+      working-directory: ./Terraform
 
     - name: Terraform Plan
       id: plan # we can do terraform plan -destroy to destroy all resources
@@ -63,12 +65,13 @@ jobs:
 
     - name: set-outputs
       id: get-public-ip
-      run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
+      run: echo "BASTION_PUBLIC_IP=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
+      #working-directory: ./Terraform
 
     - name: set-outputs
       id: get-private-ip
-      run: echo "application_private_ip_1=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
-      
+      run: echo "EC2_PRIVATE_IP=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
+      #working-directory: ./Terraform
       
       # echo "::set-output name=bastion_public_ip::$(terraform output bastion_public_ip)"  old way of outputs
       # echo "::set-output name=application_private_ip_1::$(terraform output application_private_ip_1)" old way of outputs
