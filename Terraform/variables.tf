@@ -45,11 +45,11 @@ variable "ec2_instance_type" {
 }
 
 variable "key_name" {
-   type = string
+  type = string
 }
 
 variable "public_key" {
-   type = string  
+  type = string
 }
 
 
