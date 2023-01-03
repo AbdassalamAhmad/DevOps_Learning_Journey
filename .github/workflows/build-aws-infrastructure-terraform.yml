@@ -31,7 +31,7 @@ jobs:
         path: ./Terraform
     
     - name: List files
-      run: ls
+      run: ls ./Terraform
 
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
