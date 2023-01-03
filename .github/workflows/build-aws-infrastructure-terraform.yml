@@ -21,8 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     
     outputs: # used to reference in later job
-      BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
-      EC2_PRIVATE_IP: ${{ steps.get-private-ip.outputs.application_private_ip_1}}    
+      EC2_PRIVATE_IP: ${{ steps.get-private-ip.outputs.application_private_ip_1}} 
+      #BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
+   
     
     steps:
     - name: Checkout Code
