@@ -106,6 +106,8 @@ jobs:
       
     - name: Connect to Private EC2
       run: |- # # Add the host key of the remote server to the known_hosts file
+        mkdir /home/runner/.ssh/
+        touch /home/runner/.ssh/known_hosts
         ssh-keyscan -H $EC2_PRIVATE_IP >> ~/.ssh/known_hosts 
         echo "$EC2_PRIVATE_SSH_KEY" > private_key.pem && chmod 400 private_key.pem
         ssh -tt -o StrictHostKeyChecking=no -i private_key.pem -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$EC2_PRIVATE_IP
