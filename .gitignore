@@ -3,3 +3,5 @@ Docker/demo_app/py/automation/
 node_modules
 chromedriver.exe
 .vscode
+Terraform/.terraform/
+**/**/__pycache__/
