@@ -21,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     
     outputs: # used to reference in later job
-      EC2_PRIVATE_IP: ${{ steps.get-private-ip.outputs.application_private_ip_1}} 
-      #BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
+      EC2_PRIVATE_IP: ${{ steps.get-private-ip.outputs.ec2_private_ip}} 
+      BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
    
     
     steps:
@@ -66,12 +66,12 @@ jobs:
 
     - name: set-outputs-1
       id: get-private-ip
-      run: echo "EC2_PRIVATE_IP=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
+      run: echo "ec2_private_ip=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
    
     - name: set-outputs-2
       id: get-public-ip
-      run: echo "BASTION_PUBLIC_IP=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
+      run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
 
 
