@@ -64,14 +64,16 @@ jobs:
       working-directory: ./Terraform
 
     - name: set-outputs-1
+      id: get-private-ip
+      run: echo "EC2_PRIVATE_IP=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
+      working-directory: ./Terraform
+   
+    - name: set-outputs-2
       id: get-public-ip
       run: echo "BASTION_PUBLIC_IP=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
 
-    - name: set-outputs-2
-      id: get-private-ip
-      run: echo "EC2_PRIVATE_IP=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
-      working-directory: ./Terraform
+
       
       # echo "::set-output name=bastion_public_ip::$(terraform output bastion_public_ip)"  old way of outputs
       # echo "::set-output name=application_private_ip_1::$(terraform output application_private_ip_1)" old way of outputs
@@ -87,9 +89,20 @@ jobs:
     - name: set private IP env variables
       run: echo EC2_PRIVATE_IP=${{ needs.build-aws.outputs.EC2_PRIVATE_IP }} >> $GITHUB_ENV
 
+    - name: Use the value 1
+      id: step_one
+      run: |
+        echo "${{ env.EC2_PRIVATE_IP }}" 
+
     - name: set public IP env variables
       run: echo BASTION_PUBLIC_IP=${{ needs.build-aws.outputs.BASTION_PUBLIC_IP }} >> $GITHUB_ENV
         
+    - name: Use the value 2
+      id: step_two
+      run: |
+        echo "${{ env.BASTION_PUBLIC_IP }}" 
+
+      
     - name: Connect to Private EC2
       run: |-
         echo "$EC2_PRIVATE_SSH_KEY" > private_key.pem && chmod 400 private_key.pem
