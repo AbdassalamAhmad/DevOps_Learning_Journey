@@ -107,7 +107,7 @@ jobs:
     - name: Connect to Private EC2
       run: |-
         echo "$EC2_PRIVATE_SSH_KEY" > private_key.pem && chmod 400 private_key.pem
-        ssh -o StrictHostKeyChecking=no -i private_key.pem -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$EC2_PRIVATE_IP
+        ssh -tt -o StrictHostKeyChecking=no -i private_key.pem -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$EC2_PRIVATE_IP
         mkdir my_app
         cd ./my_app
         touch new_file.txt
