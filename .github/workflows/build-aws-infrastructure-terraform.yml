@@ -66,12 +66,12 @@ jobs:
     - name: set-outputs
       id: get-public-ip
       run: echo "BASTION_PUBLIC_IP=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
-      #working-directory: ./Terraform
+      working-directory: ./Terraform
 
     - name: set-outputs
       id: get-private-ip
       run: echo "EC2_PRIVATE_IP=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
-      #working-directory: ./Terraform
+      working-directory: ./Terraform
       
       # echo "::set-output name=bastion_public_ip::$(terraform output bastion_public_ip)"  old way of outputs
       # echo "::set-output name=application_private_ip_1::$(terraform output application_private_ip_1)" old way of outputs
