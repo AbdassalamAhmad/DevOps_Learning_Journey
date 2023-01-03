@@ -104,16 +104,33 @@ jobs:
         echo "${{ env.BASTION_PUBLIC_IP }}" 
 
       
-    - name: Connect to Private EC2
-      run: |- # # Add the host key of the remote server to the known_hosts file
-        mkdir /home/runner/.ssh/
-        touch /home/runner/.ssh/known_hosts
-        ssh-keyscan -H $EC2_PRIVATE_IP >> ~/.ssh/known_hosts 
-        echo "$EC2_PRIVATE_SSH_KEY" > private_key.pem && chmod 400 private_key.pem
-        ssh -tt -o StrictHostKeyChecking=no -i private_key.pem -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$EC2_PRIVATE_IP
-        mkdir my_app
-        cd ./my_app
-        touch new_file.txt
+    - name: ssh proxy command
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ env.EC2_PRIVATE_IP }}
+        username: ec2-user
+        key: ${{ env.EC2_PRIVATE_SSH_KEY }}
+        proxy_host: ${{ env.BASTION_PUBLIC_IP }}
+        proxy_username: ec2-user
+        proxy_key: ${{ env.EC2_PRIVATE_SSH_KEY }}
+        script: |
+          ls -al
+          mkdir my_app
+          cd ./my_app
+          touch new_file.txt
+          
+    
+    
+    
+    # - name: Connect to Private EC2
+    #   run: |- # # Add the host key of the remote server to the known_hosts file
+    #     mkdir -p ~/.ssh/
+    #     ssh-keyscan -H $EC2_PRIVATE_IP >> ~/.ssh/known_hosts 
+    #     echo "$EC2_PRIVATE_SSH_KEY" > private_key.pem && chmod 400 private_key.pem
+    #     ssh -tt -o StrictHostKeyChecking=no -i private_key.pem -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$EC2_PRIVATE_IP
+    #     mkdir my_app
+    #     cd ./my_app
+    #     touch new_file.txt
         
       #  ssh -i $EC2_PRIVATE_SSH_KEY -J ec2-user@$BASTION_PUBLIC_IP ec2-user@$APPLICATION_PRIVATE_IP_1 --yes
 
