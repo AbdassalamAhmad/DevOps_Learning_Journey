@@ -52,7 +52,7 @@ jobs:
     - name: Terraform Plan
       id: plan # we can do terraform plan -destroy to destroy all resources
       run: |-
-        terraform plan \
+        terraform plan -destroy \
         -var="public_key=$EC2_PUBLIC_SSH_KEY" \
         --var-file ./prod_values.tfvars \
         -out=PLAN       
