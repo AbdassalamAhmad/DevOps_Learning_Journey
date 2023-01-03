@@ -27,8 +27,7 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
-      with:
-        path: ./Terraform
+
     
     - name: List files
       run: ls ./Terraform
