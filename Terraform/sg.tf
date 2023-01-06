@@ -1,8 +1,10 @@
-#-------------------------- Security Group For Instance --------------------------#
+#-------------------------- Security Group For EC2 Instance --------------------------#
 
 resource "aws_security_group" "InstanceSG" {
   name = "ec2_security_group"
-
+  depends_on = [
+  aws_security_group.ALBSG, aws_security_group.BastionSG
+  ]
   vpc_id = module.network.my_vpc_id
 
   ingress {
@@ -10,11 +12,39 @@ resource "aws_security_group" "InstanceSG" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = [aws_security_group.ALBSG.id]
+    # cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Allow inbound traffic on port 22 (SSH)
   ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    security_groups = [aws_security_group.BastionSG.id]
+    # cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+}
+
+
+#-------------------------- Security Group For Bastion Host Instance --------------------------#
+
+resource "aws_security_group" "BastionSG" {
+  name = "bastion_security_group"
+
+  vpc_id = module.network.my_vpc_id
+
+  ingress {
+    description = "allow ssh from ALL"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -28,9 +58,7 @@ resource "aws_security_group" "InstanceSG" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-
 }
-
 
 #-------------------------- Security Group For ALB --------------------------#
 
@@ -48,12 +76,12 @@ resource "aws_security_group" "ALBSG" {
   }
 
   # Allow inbound traffic on port 22 (SSH)
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  # ingress {
+  #   from_port   = 22
+  #   to_port     = 22
+  #   protocol    = "tcp"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
 
   egress {
     from_port        = 0
