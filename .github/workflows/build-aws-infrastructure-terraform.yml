@@ -11,7 +11,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
   EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
   EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
-  DESTROY: 'yes'
+  DESTROY_ALL: 'yes'
 
 
 
@@ -50,7 +50,7 @@ jobs:
       working-directory: ./Terraform
 
     - name: Terraform Plan Build
-      if: env.DESTROY == 'no'
+      if: env.DESTROY_ALL == 'no'
       id: build
       run: |-
         terraform plan \
@@ -60,7 +60,7 @@ jobs:
       working-directory: ./Terraform
     
     - name: Terraform Plan Destroy
-      if: env.DESTROY == 'yes'
+      if: env.DESTROY_ALL == 'yes'
       id: destroy 
       run: |-
         terraform plan -destroy \
@@ -115,10 +115,10 @@ jobs:
           touch new_file.txt
           ls -al
 # instead of running script, run Ansible playbook.          
-
-
-
-
-# ssh into ec2 public bastion then destroy it once done 
-# using terraform destroy resource command and it needs the above commands to finish.
-# make it with if statement (if plan destroy dont do this job)
+    
+    # Optional step to lower some cost after operation.
+    - name: Terraform Plan Destroy Bstion Host
+      if: env.DESTROY_ALL != 'yes' # when DESTROY_ALL = yes don't run this because it's already destroyed.
+      id: destroy-bastion-host
+      run: terraform destroy -target=aws_instance.bastion_instance_1
+      working-directory: ./Terraform
