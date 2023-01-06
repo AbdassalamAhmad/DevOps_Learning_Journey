@@ -1,4 +1,4 @@
-name: Build AWS Infrastructure and Deploy Docker Flask App on it.
+name: Build AWS Infrastructure and Deploy Dockerized Flask-App on it.
 
 on:
   push:
@@ -12,7 +12,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
   EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
   EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
-  DESTROY_ALL: 'yes'
+  DESTROY_ALL: 'yes' # Make it 'no' to build AWS infra, and 'yes' to destroy it all.
 
 
 jobs:
@@ -38,13 +38,13 @@ jobs:
       run: terraform init
       working-directory: ./Terraform
     
-    # Checks that all Terraform configuration files adhere to a canonical format
+    # Checks that all Terraform configuration files in the correct format
     - name: Terraform Format
       run: terraform fmt -check
       working-directory: ./Terraform
 
     - name: Terraform Plan Build
-      if: env.DESTROY_ALL == 'no'
+      if: env.DESTROY_ALL == 'no' # will run when DESTROY_ALL is set to 'no'
       id: build
       run: |-
         terraform plan \
@@ -54,7 +54,7 @@ jobs:
       working-directory: ./Terraform
     
     - name: Terraform Plan Destroy
-      if: env.DESTROY_ALL == 'yes'
+      if: env.DESTROY_ALL == 'yes' # will run when DESTROY_ALL is set to 'yes'
       id: destroy 
       run: |-
         terraform plan -destroy \
