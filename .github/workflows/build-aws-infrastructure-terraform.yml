@@ -27,11 +27,7 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
-    
-    - name: List files
-      run: |-
-        ls -R
-    
+        
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -73,11 +69,13 @@ jobs:
       working-directory: ./Terraform
 
     - name: set-outputs-1
+      if: env.DESTROY_ALL == 'no'
       id: get-private-ip
       run: echo "ec2_private_ip=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
    
     - name: set-outputs-2
+      if: env.DESTROY_ALL == 'no'
       id: get-public-ip
       run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
@@ -89,24 +87,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-aws-infra
     steps:
-    - name: List files
-      run: |-
-        ls -R
 
+    # This step is to be able to run "destroy bastion" step
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: List files
-      run: |-
-        ls -R
-
     - name: set private IP to env variables
+      if: env.DESTROY_ALL == 'no'
       run: echo EC2_PRIVATE_IP=${{ needs.build-aws-infra.outputs.EC2_PRIVATE_IP }} >> $GITHUB_ENV
 
     - name: set public IP to env variables
+      if: env.DESTROY_ALL == 'no'
       run: echo BASTION_PUBLIC_IP=${{ needs.build-aws-infra.outputs.BASTION_PUBLIC_IP }} >> $GITHUB_ENV
           
     - name: ssh into private EC2
+      if: env.DESTROY_ALL == 'no'
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ env.EC2_PRIVATE_IP }}
