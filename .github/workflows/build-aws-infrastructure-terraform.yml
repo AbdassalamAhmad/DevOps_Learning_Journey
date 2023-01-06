@@ -12,7 +12,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
   EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
   EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
-  DESTROY_ALL: 'no' # Make it 'no' to build AWS infra, and 'yes' to destroy it all.
+  DESTROY_ALL: 'yes' # Make it 'no' to build AWS infra, and 'yes' to destroy it all.
 
 
 jobs:
