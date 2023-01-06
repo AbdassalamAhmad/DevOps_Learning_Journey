@@ -124,6 +124,6 @@ jobs:
       id: destroy-bastion-host
       run: terraform destroy -target="aws_instance.bastion_instance_1" \
             -var="public_key=$EC2_PUBLIC_SSH_KEY" \
-            --var-file ./prod_values.tfvars \
+            --var-file=./prod_values.tfvars \
             -auto-approve
       working-directory: ./Terraform
