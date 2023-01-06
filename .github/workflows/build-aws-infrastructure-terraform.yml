@@ -130,5 +130,5 @@ jobs:
       run: terraform destroy -target="aws_instance.bastion_instance_1" \
             -auto-approve \
             -var="public_key=$EC2_PUBLIC_SSH_KEY" \
-            --var-file ./prod_values.tfvars \
+            --var-file ./prod_values.tfvars
       working-directory: Terraform
