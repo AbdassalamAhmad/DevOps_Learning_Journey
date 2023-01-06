@@ -3,24 +3,24 @@
 resource "aws_security_group" "InstanceSG" {
   name = "ec2_security_group"
   depends_on = [
-  aws_security_group.ALBSG, aws_security_group.BastionSG
+    aws_security_group.ALBSG, aws_security_group.BastionSG
   ]
   vpc_id = module.network.my_vpc_id
 
   ingress {
-    description = "allow http from ALL"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
+    description     = "allow http from ALL"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
     security_groups = [aws_security_group.ALBSG.id]
     # cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Allow inbound traffic on port 22 (SSH)
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.BastionSG.id]
     # cidr_blocks = ["0.0.0.0/0"]
   }
