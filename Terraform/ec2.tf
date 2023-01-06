@@ -37,7 +37,7 @@ resource "aws_instance" "application_instance_1" {
   ami                    = var.ami
   instance_type          = var.ec2_instance_type
   availability_zone      = "${var.region}a"
-  vpc_security_group_ids = [aws_security_group.InstanceSG.id] ##########
+  vpc_security_group_ids = [aws_security_group.InstanceSG.id] #########
   key_name               = aws_key_pair.ssh_key_variable.key_name
   subnet_id              = module.network.private_app_subnet_1_id
   tags = {
