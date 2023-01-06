@@ -86,10 +86,10 @@ jobs:
     needs: build-aws-infra
     steps:
     - name: set private IP to env variables
-      run: echo EC2_PRIVATE_IP=${{ needs.build-aws.outputs.EC2_PRIVATE_IP }} >> $GITHUB_ENV
+      run: echo EC2_PRIVATE_IP=${{ needs.build-aws-infra.outputs.EC2_PRIVATE_IP }} >> $GITHUB_ENV
 
     - name: set public IP to env variables
-      run: echo BASTION_PUBLIC_IP=${{ needs.build-aws.outputs.BASTION_PUBLIC_IP }} >> $GITHUB_ENV
+      run: echo BASTION_PUBLIC_IP=${{ needs.build-aws-infra.outputs.BASTION_PUBLIC_IP }} >> $GITHUB_ENV
           
     - name: ssh into private EC2
       uses: appleboy/ssh-action@v0.1.6
@@ -112,5 +112,5 @@ jobs:
     - name: Terraform Plan Destroy Bstion Host
       if: env.DESTROY_ALL != 'yes' # when DESTROY_ALL = yes don't run this because it's already destroyed.
       id: destroy-bastion-host
-      run: terraform destroy -target=aws_instance.bastion_instance_1
+      run: terraform destroy -target=aws_instance.bastion_instance_1 -auto-approve
       working-directory: ./Terraform
