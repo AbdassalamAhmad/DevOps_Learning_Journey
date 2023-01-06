@@ -7,7 +7,7 @@ resource "aws_instance" "bastion_instance_1" {
   subnet_id                   = module.network.public_subnet_1_id
   associate_public_ip_address = true
   tags = {
-    Name = "terraform"
+    Name = "Bastion"
   }
 
 
@@ -41,7 +41,7 @@ resource "aws_instance" "application_instance_1" {
   key_name               = aws_key_pair.ssh_key_variable.key_name
   subnet_id              = module.network.private_app_subnet_1_id
   tags = {
-    Name = "terraform"
+    Name = "application_instance_1"
   }
 
 
@@ -69,7 +69,7 @@ resource "aws_instance" "application_instance_2" {
   key_name               = aws_key_pair.ssh_key_variable.key_name
   subnet_id              = module.network.private_app_subnet_2_id
   tags = {
-    Name = "terraform"
+    Name = "application_instance_2"
   }
 
 
