@@ -6,14 +6,13 @@ on:
       - 'Terraform/**'
     branches: [ "main" ]
 
+
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS User Credentials.
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
   EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
   EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
   DESTROY_ALL: 'yes'
-
-
 
 
 jobs:
@@ -28,12 +27,7 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
-
-    
-    - name: List files
-      run: |-
-        ls -R
-
+ 
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -83,8 +77,6 @@ jobs:
       id: get-public-ip
       run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
-
-
       # echo "{name}={value}" >> $GITHUB_OUTPUT # new way of outputs
 
 
