@@ -113,4 +113,4 @@ jobs:
       if: env.DESTROY_ALL != 'yes' # when DESTROY_ALL = yes don't run this because it's already destroyed.
       id: destroy-bastion-host
       run: terraform destroy -target=aws_instance.bastion_instance_1 -auto-approve
-      working-directory: ./Terraform
+      working-directory: Terraform
