@@ -9,18 +9,22 @@ on:
   workflow_dispatch: # Allow to run this workflow manually from the Actions tab
     inputs:
       trigger:
-        description: "apply OR destroy"
+        description: "apply OR destroy" # apply to build infra, destroy to destroy it all.
         required: true
-        default: apply # will write the word apply for you when triggering the pipeline manually.
+        default: apply # will choose the word apply for you when triggering the pipeline manually.
+        type: choice
+        options:
+        - apply
+        - destroy
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # AWS User Credentials.
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # AWS User Credentials.
   EC2_PRIVATE_SSH_KEY: ${{ secrets.AWS_EC2_SSH_PRIVATE_KEY }} # Used to ssh into EC2.
   EC2_PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_PUBLIC_KEY }} # Used to upload public key to aws.
-  DESTROY_ALL: 'yes' # Make it 'no' to build AWS infra, and 'yes' to destroy it all.
-  TRIGGER: '${{ inputs.trigger }}' 
-
+  TF_VAR_ami: ${{ secrets.TF_VAR_AMI }}  # we will use it in two jobs.
+  #TRIGGER: 'apply' # Make it 'apply' to build AWS infra, and 'destroy' to destroy it all. "auto_workflow"
+  TRIGGER: '${{ inputs.trigger }}' # "manual workflow"
 
 jobs:
   build-aws-infra:
@@ -29,11 +33,7 @@ jobs:
     outputs: # used to reference in later job
       EC2_PRIVATE_IP: ${{ steps.get-private-ip.outputs.ec2_private_ip}} 
       BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
-   
-    env:
-      TF_VAR_ami: ${{ secrets.TF_VAR_AMI }} # even if the variable not sensitive  it will be '***' in plan
-                                            # this method will allow us to define variables like password in 
-                                            # different way than -var in command-line.
+       
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -55,37 +55,22 @@ jobs:
         terraform fmt -check
       working-directory: ./Terraform
 
-    - name: Terraform Plan Build
-      if: env.DESTROY_ALL == 'no' # will run when DESTROY_ALL is set to 'no'
-      id: build
+    - name: Terraform $TRIGGER
+      id: $TRIGGER
       run: |-
-        terraform plan \
+        terraform $TRIGGER \
         -var="public_key=$EC2_PUBLIC_SSH_KEY" \
-        -out=PLAN       
-      working-directory: ./Terraform
-    
-    - name: Terraform Plan Destroy
-      if: env.DESTROY_ALL == 'yes' # will run when DESTROY_ALL is set to 'yes'
-      id: destroy 
-      run: |-
-        terraform plan -destroy \
-        -var="public_key=$EC2_PUBLIC_SSH_KEY" \
-        -out=PLAN       
-      working-directory: ./Terraform
-
-    - name: Terraform Apply
-      id: apply
-      run: terraform apply "PLAN"
+        -auto-approve
       working-directory: ./Terraform
 
     - name: set-outputs-1
-      if: env.DESTROY_ALL == 'no'
+      if: env.TRIGGER == 'apply'
       id: get-private-ip
       run: echo "ec2_private_ip=$(terraform output application_private_ip_1)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
    
     - name: set-outputs-2
-      if: env.DESTROY_ALL == 'no'
+      if: env.TRIGGER == 'apply'
       id: get-public-ip
       run: echo "bastion_public_ip=$(terraform output bastion_public_ip)" >> $GITHUB_OUTPUT # new way of outputs
       working-directory: ./Terraform
@@ -103,15 +88,15 @@ jobs:
       uses: actions/checkout@v3
 
     - name: set private IP to env variables
-      if: env.DESTROY_ALL == 'no'
+      if: env.TRIGGER == 'apply'
       run: echo EC2_PRIVATE_IP=${{ needs.build-aws-infra.outputs.EC2_PRIVATE_IP }} >> $GITHUB_ENV
 
     - name: set public IP to env variables
-      if: env.DESTROY_ALL == 'no'
+      if: env.TRIGGER == 'apply'
       run: echo BASTION_PUBLIC_IP=${{ needs.build-aws-infra.outputs.BASTION_PUBLIC_IP }} >> $GITHUB_ENV
           
     - name: ssh into private EC2
-      if: env.DESTROY_ALL == 'no'
+      if: env.TRIGGER == 'apply'
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ env.EC2_PRIVATE_IP }}
@@ -130,7 +115,7 @@ jobs:
     
     # Optional step to lower some cost after operation.
     - name: Terraform Plan Destroy Bstion Host
-      if: env.DESTROY_ALL == 'no' # when DESTROY_ALL = 'yes' don't run this because it's already destroyed.
+      if: env.TRIGGER == 'apply' # when TRIGGER = 'yes' don't run this because it's already destroyed.
       id: destroy-bastion-host
       run: terraform destroy -target="aws_instance.bastion_instance_1" \
             -var="public_key=$EC2_PUBLIC_SSH_KEY" \
