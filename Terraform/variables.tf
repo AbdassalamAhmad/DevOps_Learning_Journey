@@ -49,7 +49,8 @@ variable "key_name" {
 }
 
 variable "public_key" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 
@@ -69,7 +70,9 @@ variable "public_key" {
 # }
 # variable "username" {
 #   type = string
+#   sensitive = true
 # }
 # variable "password" {
 #   type = string
+#   sensitive = true
 # }
