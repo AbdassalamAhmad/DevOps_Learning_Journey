@@ -1,6 +1,6 @@
 output "load_balancer_dns" {
-  value = aws_lb.alb.dns_name
-  #sensitive = true
+  value     = aws_lb.alb.dns_name
+  sensitive = true
 }
 
 output "bastion_public_ip" {
