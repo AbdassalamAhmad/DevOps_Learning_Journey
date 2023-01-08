@@ -56,7 +56,7 @@ jobs:
       working-directory: ./Terraform
 
     - name: Terraform $TRIGGER
-      id: "$TRIGGER"
+      id: apply-or-destroy
       run: |-
         terraform $TRIGGER \
         -var="public_key=$EC2_PUBLIC_SSH_KEY" \
