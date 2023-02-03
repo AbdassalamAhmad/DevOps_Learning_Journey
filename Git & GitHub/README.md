@@ -54,6 +54,9 @@ $ git show HEAD~2 # shows the commit before head with two steps.
 
 **undoing commands:**
 ```bash
+$ git reset <commit-id> # will go back to that commit and DELETE everything after it (history and files).
+
+
 $ git restore --staged . # restore all files in staging area (un-add so changes stay in working dir).
 $ git restore file1.txt # (get back to previous version that was stored in staging area).
 $ git restore --source=HEAD~1 file1.txt #
