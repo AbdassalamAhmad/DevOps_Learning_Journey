@@ -23,6 +23,8 @@ $ cp -i file1.txt dir1/file1.txt # asks before overwrite the file.
 - The **/etc/passwd** file includes these fields: <br>
 Login name | Encrypted password | User Id (uid) | Group Id (gid) | Comment about the user | Home Directory | Login bash.
 
+- `sudo passwd root` To set the root paswword for the first time (ubuntu image from amazon)
+
 - The **/etc/shadow** file: Have all passwords encrypted -probably- with SHA 256 
 
 - **useradd**: Add new users.
@@ -220,7 +222,7 @@ $ tar -cvf archivename.tar file1 file2 file3 # -c: create archive, -v: verbose (
 $ tar -rvf archivename.tar file4 # add file4 to archive.
 $ tar -uvf /root/homes.tar /home # -u: updates an archive, only newer files will be written to the archive.
 $ tar -tvf /root/homes.tar # -t: List contents of archive.
-$ tar -xvf /root/homes.tar -C /tmp # -C: To specify the target directory you want to extract the file to.
+$ tar -xvf /root/homes.tar -C /tmp # -x: to EXTRACT files -C: To specify the target directory you want to extract the file to.
 $ tar -zcvf archive.tar.gz file1 # create an archive and COMPRESS it.
 ```
 - **compress**: compress a file.
